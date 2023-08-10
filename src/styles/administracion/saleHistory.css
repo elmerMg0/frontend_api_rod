@@ -1,0 +1,33 @@
+:root{
+    --colorMain: #3C8DBB;
+    --colorMainBlack: #367FA6;
+    --colorSecundary: #2D3C42;
+    --colorSecundaryBlack: #222D30;
+    --colorRed: #DA4E3B;
+    --colorRedBlack: #e4412b;
+    --colorWhite: #ffffff;
+    --colorGreen: #00A758;
+}
+
+.sale-history{
+    width: 100%;
+    margin: 50px;
+}
+.modal-footer__text > p{
+    margin: 0;
+}
+.modal-header__text > p{
+    margin: 0;
+}
+.history-thead{
+    background-color: var(--colorMain);
+}
+.history-thead tr th{
+    color: var(--colorWhite);
+}
+.history-state{
+    max-width: 100px;
+}
+.history-state button{
+    min-width: 90px;
+}

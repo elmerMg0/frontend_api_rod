@@ -1,0 +1,27 @@
+:root{
+   --colorMain: #3C8DBB;
+   --colorMainBlack: #367FA6;
+   --colorSecundary: #2D3C42;
+   --colorSecundaryBlack: #222D30;
+   --colorRed: #DA4E3B;
+   --colorWhite: #ffffff;
+}
+
+
+.customers{
+  margin: 50px;
+  width: 100%;
+}
+.customers h3{
+   margin: 0;
+}
+p,h1,h2,h3,h5{
+   margin: 0;
+   padding: 0;
+}
+
+
+.color-main{
+   background-color: var(--colorMain);
+}
+

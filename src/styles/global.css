@@ -1,0 +1,62 @@
+:root {
+  --colorWhite: #ffffff;
+  --colorGreen: #00a758;
+  --colorRedMain: #b6003b;
+  --colorWhiteMain: #f0f0f0;
+  --fontMain: "Futura LT";
+  --fontMainBold: "Futura LT Bold";
+  --fontSizeTitle: 30px;
+  --fuenteParrafos: 'Merriweather Sans', sans-serif;
+  --colorGris: #B8B6B5;
+}
+
+.html{
+  scroll-behavior: smooth;
+}
+.contenedor{
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+::-webkit-scrollbar {
+    display: none;
+}
+.btn-add{
+  border: none;
+  background-color: var(--colorRedMain);
+  border-radius: 10px;
+  padding: 7px 15px;
+  color: var(--colorWhite);
+}
+.sms-error{
+  color: var(--colorRedMain);
+  font-size: 15px;
+  text-align: center;
+  margin: 0;
+}
+.footer{
+  text-align: center;
+  background-color: var(--colorRedMain);
+  color: var(--colorWhite);
+  padding: 15px;
+  margin-top: 20px;
+  font-size: 14px;
+}
+.footer p{
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+@media (min-width: 800px){
+  .contenedor{
+      max-width: 900px;
+      width: 90%;
+  }
+}

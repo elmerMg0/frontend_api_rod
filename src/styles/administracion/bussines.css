@@ -1,0 +1,42 @@
+:root{
+    --colorMain: #3C8DBB;
+    --colorMainBlack: #367FA6;
+    --colorSecundary: #2D3C42;
+    --colorSecundaryBlack: #222D30;
+    --colorRed: #DA4E3B;
+    --colorRedBlack: #e4412b;
+    --colorWhite: #ffffff;
+}
+
+.bussiness{
+    width: 100%;
+    margin: 50px;
+}
+.bussiness-form{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 15px 0px;
+}
+.bussiness-logo{
+    margin: 15px auto;
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+.bussiness-logo label{
+    position: absolute;
+    right: 14%;
+    bottom: 0px;
+    cursor: pointer;
+}
+.bussiness-logo > img{
+    display: block;
+    width: 200px;
+    height: 200px;
+    border: 1px solid var(--colorSecundaryBlack);
+    border-radius: 50%;
+    margin: 0 auto;
+    object-fit: contain;
+} 
+

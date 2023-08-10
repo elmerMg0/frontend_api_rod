@@ -1,0 +1,29 @@
+:root{
+    --colorMain: #3C8DBB;
+    --colorMainBlack: #367FA6;
+    --colorSecundary: #2D3C42;
+    --colorSecundaryBlack: #222D30;
+    --colorRed: #DA4E3B;
+    --colorWhite: #ffffff;
+}
+
+.period{
+    margin: 50px;
+    width: 100%;
+}
+.box-opening__form{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 10px;
+    margin: 15px 0px;
+}   
+.box-opening__form label{
+    font-size: 16px;
+}
+.period-dates{
+    display: flex;
+    gap: 20px;
+}
+.period-dates > p {
+    margin: 0;
+}

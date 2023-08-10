@@ -1,0 +1,122 @@
+
+.category-card > h5{
+    font-size: var(--fontSizeTitle);
+    margin: 25px 0px;
+}
+.category-card img{
+    width: 100%;
+}
+.category-card__footer{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    margin-top: 15px;
+}
+.category-card__footer h5{
+    margin: 0;
+    white-space: nowrap;
+}
+.category-card__footer p{
+    margin: 0;
+    font-size: 13px;
+}
+.category-card__plus{
+    background-color: var(--colorRedMain);
+    color: var(--colorWhite);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 25px;
+    text-align: center;
+    float: right;
+    cursor: pointer;
+}
+
+.modal-product-row{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+}
+.modal-product-row__name{
+    width: 150px;
+}
+.modal-product-row p{
+    margin: 0;
+    text-align: left;
+    font-size: 18px;
+}
+.modal-product-row input{
+    width: 30px;
+    height: 25px;
+    border: 1px solid rgb(163, 163, 163);
+    text-align: center;
+}
+.moda-product-row__btns{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+.moda-product-row__btns button{
+    background-color: var(--colorGris);
+    border: none;
+    color: var(--colorWhite);
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+}
+.modal-body{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.modal-header{
+    align-items: normal;
+}
+.modal-header p{
+    margin: 0;
+}
+
+.modal-instructions{
+    width: 100%;
+}
+.modal-instructions label{
+    display: block;
+    font-weight: 600;
+}
+.modal-instructions textarea{
+    width: 100%;
+    padding: 10px;
+    height: 80px;
+    resize: none;
+    background-color: var(--colorWhiteMain);
+    border: 1px solid var(--colorGris);
+}
+
+@media (min-width: 800px){
+   
+    .category-card{
+       
+    }
+    .category-card__img h5{
+        margin: 15px 0;
+        font-size: 40px;
+    }
+    .category-card__img {
+        width: 400px;
+    }
+    .category-card__img img{
+        width: 100%;
+    }
+    .category-card__footer{
+        margin-top: 15px;
+    }
+    .category-card__body{
+        display: flex;
+        gap: 100px;
+        align-items: start;
+        justify-content: space-between;
+    }
+}

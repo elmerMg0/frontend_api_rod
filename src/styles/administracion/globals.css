@@ -1,0 +1,191 @@
+:root{
+    --colorMain: #3C8DBB;
+    --colorMainBlack: #367FA6;
+    --colorSecundary: #2D3C42;
+    --colorSecundaryBlack: #222D30;
+    --colorRed: #DA4E3B;
+    --colorRedBlack: #e4412b;
+    --colorWhite: #ffffff;
+    --colorGreen: #00A758;
+    --colorYellow: #fd910c;
+    --colorSend: #07eaff;
+}
+
+.btn-main-send {
+    color: var(--colorWhite);
+    background-color: var(--colorSend);
+    padding: 5px 11px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    transition: 0.5s;
+}
+
+.btn-main {
+    color: var(--colorWhite);
+    background-color: var(--colorMain);
+    padding: 5px 11px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    transition: 0.5s;
+}
+
+.btn-main-red {
+    color: var(--colorWhite);
+    background-color: var(--colorRed);
+    padding: 5px 11px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    transition: 0.5s;
+}
+.btn-main-green {
+    color: var(--colorWhite);
+    background-color: var(--colorGreen);
+    padding: 5px 11px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    transition: 0.5s;
+}
+
+.btn-main-yellow {
+    color: var(--colorWhite);
+    background-color: var(--colorYellow);
+    padding: 5px 11px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    transition: 0.5s;
+}
+
+.btn-main:hover{
+    color: var(--colorWhite);
+    background-color: var(--colorMainBlack);
+}
+
+.btn-main-red:hover{
+    color: var(--colorWhite);
+    background-color: var(--colorRedBlack);
+}
+
+.border-radius-top-rigth{
+    border-top-right-radius: '10px'
+}
+.border-radius-top-left{
+    border-top-left-radius: '10px';
+}
+.btn-new{
+    display: flex;
+    background-color: var(--colorMain);
+    border-radius: 10px;
+    gap: 5px;
+    padding: 7px 10px;
+    color: var(--colorWhite);
+    border: none;
+ }
+ .btn-new button{
+    padding: 0;
+ }
+
+ .paginator{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+ }
+ 
+ .paginator p,.paginator h5{
+    margin: 0;
+ }
+ .paginator button{
+    border: none;
+    background-color: transparent;
+    transition: 0.5s;
+    padding: 0px 5px;
+ }
+ .paginator button:hover{
+    background-color: var(--colorMain);
+    color: var(--colorWhite);
+    border-radius: 10px;
+ }
+
+ /* Search bar  */
+.search-bar{
+    display: flex;
+    gap: 10px;
+    margin: 15px 0px;
+    display: relative;
+ }
+ .row-table-notExist{
+    text-align: center;
+ }
+ 
+ .img-search-bar{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+ }
+ .borTopLeftRa{
+     border-top-left-radius: 10px;
+}
+.borTopRightRa{
+    border-top-right-radius: 10px;
+ }
+
+ .report-header-seekers{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.report-header-seekers input{
+    border: 1px solid var(--colorSecundary);
+    border-radius: 10px;
+}
+.report-header-seekers select{
+    border: 1px solid var(--colorSecundary);
+    border-radius: 10px;
+    background-color: transparent;
+    outline: none;
+}
+/* PDF viewer */
+.report-header-select{
+    padding: 9px 5px;
+}
+
+.viewer-print{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.viewer-print_btn{
+    background-color: #444;
+    text-align: center;
+}
+
+.viewer-print_btn button{
+    color: var(--colorWhite);
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+}
+.bg-pdfviewer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+/* Background blue head table */
+.head-table{
+    background-color: var(--colorMain);
+    border-radius: 10px;
+ }
+ .head-table tr th{
+    color: var(--colorWhite);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 500;
+ }

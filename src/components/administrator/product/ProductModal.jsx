@@ -1,0 +1,240 @@
+import React, { useState, useEffect } from "react";
+import { Modal } from "react-bootstrap";
+import { Form, InputGroup } from "react-bootstrap";
+const APIURLIMG = import.meta.env.VITE_REACT_APP_API_URL_IMG;
+const initialState = {
+  nombre: "",
+  precio_venta: "",
+  precio_compra: "",
+  descripcion: "",
+  estado: '',
+  categoria: '',
+  url_image: "",
+  cortesia: '',
+};
+
+const ProductModal = ({
+  show,
+  setShow,
+  create,
+  productToEdit,
+  setProductToEdit,
+  updateProduct,
+  categories,
+  setVarietiesProduct,
+  deleteProduct,
+}) => {
+  const [product, setProduct] = useState(initialState);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [varieties, setVarieties] = useState([]);
+  useEffect(() => {
+    if (productToEdit && Object.keys(productToEdit).length !== 0) {
+      const stateCurrent = productToEdit.cortesia ? 'Activo' : 'Inactivo';
+      setProduct({...productToEdit, 'cortesia': stateCurrent});
+    } else {
+      setProduct(initialState);
+    }
+ 
+  }, [show]);
+
+  const handleConfirm = () => {
+    setShow(false);
+    if (!product.id) {
+      create(product, selectedImage, varieties);
+    } else {
+      updateProduct(product, selectedImage, varieties);
+    }
+    setProductToEdit({});
+    setSelectedImage(null);
+    setVarieties([]);
+    setVarietiesProduct([]);
+  };
+  const handleOnChange = (e) => {
+    setProduct({
+      ...product,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleCancel = () => {
+    setShow(false);
+    setProductToEdit({});
+    setVarieties([]);
+    setVarietiesProduct([]);
+  };
+
+  const handleImageChange = (event) => {
+    setProduct({
+      ...product,
+      [event.target.name]: event.target.files[0],
+    });
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setSelectedImage(e.target.result);
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  };
+
+/*   const handleDeleteProduct = () => {
+    deleteProduct(product.id);
+    setShow(false);
+  }; */
+
+  return (
+    <Modal show={show} size="md" centered backdrop>
+      <Modal.Header>
+        <Modal.Title>
+          {
+            product.id ? 
+            <h5>Editar Producto</h5>
+            :
+            <h5>Crear nuevo producto</h5>
+          }
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <InputGroup className="mb-2">
+          <InputGroup.Text>Nombre</InputGroup.Text>
+          <Form.Control
+            placeholder="Nombre"
+            type="text"
+            onChange={handleOnChange}
+            name="nombre"
+            value={product.nombre}
+            required
+          />
+        </InputGroup>
+        <InputGroup className="mb-2">
+          <InputGroup.Text>Precio de venta</InputGroup.Text>
+          <Form.Control
+            placeholder="Precio de venta"
+            type="number"
+            onChange={handleOnChange}
+            name="precio_venta"
+            value={product.precio_venta}
+          />
+        </InputGroup>
+        <InputGroup className="mb-2">
+          <InputGroup.Text>Precio de compra</InputGroup.Text>
+          <Form.Control
+            placeholder="Precio de compra"
+            type="text"
+            onChange={handleOnChange}
+            name="precio_compra"
+            value={product.precio_compra}
+          />
+        </InputGroup>
+        <InputGroup className="mb-2">
+          <InputGroup.Text>Descripción</InputGroup.Text>
+          <Form.Control
+            placeholder="Descripción"
+            type="text"
+            onChange={handleOnChange}
+            name="descripcion"
+            value={product.descripcion}
+          />
+        </InputGroup>
+        
+        <InputGroup className="mb-2">
+          <InputGroup.Text>Estado</InputGroup.Text>
+          <Form.Select
+            value={product.estado}
+            name="estado"
+            id='estado'
+            onChange={handleOnChange}
+          >
+            <option selected >Seleccione una opción</option>
+            <option value='Activo'>Activo</option>
+            <option value='Inactivo'>Inactivo</option>
+            
+          </Form.Select>
+        </InputGroup>
+
+        <InputGroup className="mb-2">
+          <InputGroup.Text>Categoria</InputGroup.Text>
+          <Form.Select
+            value={product.categoria}
+            name="categoria"
+            id='categoria'
+            onChange={handleOnChange}
+          >{
+            product.id ? 
+            <option selected>{product.nombre_categoria}</option>
+            :
+            <option selected>Seleccione una opción</option>
+          }
+            {categories.map((cat) => (
+              <option key={cat.id} value={cat.id}>
+                {cat.nombre}
+              </option>
+            ))}
+          </Form.Select>
+        </InputGroup>
+
+        <InputGroup className="mb-2">
+          <InputGroup.Text>Cortesia</InputGroup.Text>
+          <Form.Select
+            value={product.cortesia}
+            name="cortesia"
+            id='cortesia'
+            onChange={handleOnChange}
+          >
+            <option selected >Seleccione una opción</option>
+            <option value='Activo'>Activo</option>
+            <option value='Inactivo'>Inactivo</option>
+            
+          </Form.Select>
+        </InputGroup>
+
+
+        <InputGroup className="mb-2">
+          <Form.Control
+            placeholder="pique.jpg"
+            type="file"
+            onChange={handleImageChange}
+            name="url_image"
+            /*  value={product.url_image} */
+            accept='.jpg,.png,.jpng,.jpeg,.webp'
+          />
+        </InputGroup>
+        {selectedImage ? (
+          <div className="modal-product-image">
+            <img src={selectedImage} alt="preview" />
+          </div>
+        ) : (
+          <>
+            {product.url_image && product.url_image.length > 0 && (
+              <div className="modal-product-image">
+                <img
+                  src={`${APIURLIMG}${product.url_image}`}
+                  alt="foto producto"
+                />
+              </div>
+            )}
+          </>
+        )}
+      </Modal.Body>
+      <Modal.Footer>
+      <button onClick={() => handleCancel()} className="btn-main">
+          Cancelar
+        </button>
+       {/*  {product.id && (
+          <button
+            className="btn-main-red"
+            onClick={() => handleDeleteProduct()}
+          >
+            Eliminar
+          </button>
+        )} */}
+        
+        <button onClick={handleConfirm} className="btn-main-green">
+          Guardar
+        </button>
+      </Modal.Footer>
+    </Modal>
+  );
+};
+
+export default ProductModal;

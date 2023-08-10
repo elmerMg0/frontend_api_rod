@@ -1,0 +1,16 @@
+.report-product{
+    width: 100%;
+}
+.report-product__header{
+    margin: 50px 50px 0px 50px;
+}
+
+.report-product__table{
+    width: 90%;
+    margin: 30px 50px 0px 50px;
+}
+.report-table{
+    height: calc(100vh - 250px);
+    overflow: scroll;
+
+}

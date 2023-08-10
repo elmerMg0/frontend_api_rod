@@ -1,0 +1,35 @@
+:root{
+    --colorMain: #3C8DBB;
+    --colorMainBlack: #367FA6;
+    --colorSecundary: #2D3C42;
+    --colorSecundaryBlack: #222D30;
+    --colorRed: #DA4E3B;
+    --colorRedBlack: #e4412b;
+    --colorWhite: #ffffff;
+}
+
+.category{
+    margin: 50px;
+    width: 100%;
+  }
+.category h3{
+     margin: 0;
+  } 
+.row-table-img{
+    width: 10px;
+}
+.row-table-img img{
+    width: 100%;
+    border-radius: 5px;
+}
+.modal-category-image{
+    width: 200px;
+    margin: 0 auto;
+}
+.modal-category-image img{
+    border-radius: 10px;
+    width: 100%;
+}
+.category-state button{
+  min-width: 80px;
+}

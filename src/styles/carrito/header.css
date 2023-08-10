@@ -1,0 +1,37 @@
+.pos-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.bg-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--colorRedMain);
+  width: 100%;
+  height: 100px;
+  position: relative;
+}
+.bg-header__img {
+  /* position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); */
+  width: 60px;
+  height: 60px;
+}
+.bg-header__img img{
+  width: 100%;
+  border-radius: 50%;
+}
+
+.bg-header__shopicon{
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+}
+.bg-header__shopicon > p{
+  margin: 0;
+  color: var(--colorWhite);
+}

@@ -1,0 +1,11 @@
+.delivery{
+    width: 100%;
+    margin: 50px;
+    height: calc(100vh - 160px);
+    overflow: scroll;
+}
+.delivery-header{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
