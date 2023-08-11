@@ -4,7 +4,7 @@ import trashRed from "../../../../assets/svg/trashRed.svg";
 import { useEffect, useState } from "react";
 import { decrementQuantity, deleteProduct, incrementQuantity } from "../../../../redux/states/carritoUser";
 import ModalConfirm from "../../../global/modal/ModalConfirm";
-import ModalSendDetail from "./ModalSendDetail";
+import { Trash } from "../../../global/icons/Icons";
 const TableOrderDetail = () => {
   const orderDetail = useSelector((store) => store.carritoUser);
   const dispatch = useDispatch();
@@ -78,11 +78,12 @@ const TableOrderDetail = () => {
                 },00`}</td>
                 <td>
                   
-                  <img
+                 {/*  <img
                     src={trashRed}
                     alt="icon editar"
                     onClick={() => handleDeleteProduct(prod)}
-                  />
+                  /> */}
+                  <Trash/>
                 </td>
               </tr>
             );

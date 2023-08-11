@@ -13,38 +13,45 @@ const carritoUser = createSlice({
   reducers: {
     /* Concatenamos los arreglos, despues actualizamos el estado global */
     addProductCarrito: (state, action) => {
-      //verificar que si ya hay un producto igual, eliminar el anterior y agregar el reciente
-      const payload = action.payload;
-      let arrayFilter = state;
-      for(let i = 0; i <  payload.length; i++){
-        let exists = state.some( prod => prod.id === payload[i].id) ;
-        if(exists){
-          arrayFilter = arrayFilter.filter( prod => prod.id !== payload[i].id)  
+      const products = action.payload;
+
+      const concatArray = products.reduce((map, value) => {
+        const indexProduct = map.findIndex(prod => prod.id === value.id);
+        console.log(map)
+        if(indexProduct !== -1){
+          map[indexProduct].cantidad = value.cantidad;
+        }else{
+          map.push(value); 
         }
-      }
-      /* Concat  */
-      const concatArray = [...arrayFilter].concat(action.payload);
+        return map;
+      }, state)
+
       persistLocalStorage(keyCarritoUser, concatArray);
       return concatArray;
     },
 
     incrementQuantity: (state, action) => {
-      state.map( prod => {
+      const  id  = action.payload;
+      const indexProduct = state.findIndex(prod => prod.id === id)
+      if( indexProduct !== -1){
+        state[indexProduct].cantidad ++;
+      }
+      persistLocalStorage(keyCarritoUser, state);
+      return state;
+
+   /*    state.map( prod => {
         if(prod.id === action.payload){
           prod.cantidad += 1;
         }
         return prod;
-      })
-      persistLocalStorage(keyCarritoUser, state);
-      return state;
+      }) */
     }
     ,decrementQuantity: (state, action) => {
-      state.map( prod => {
-        if(prod.id === action.payload){
-          prod.cantidad -= 1;
-        }
-        return prod;
-      })
+      const  id  = action.payload;
+      const indexProduct = state.findIndex(prod => prod.id === id)
+      if( indexProduct !== -1){
+        state[indexProduct].cantidad ++;
+      }
       persistLocalStorage(keyCarritoUser, state);
       return state;
     },

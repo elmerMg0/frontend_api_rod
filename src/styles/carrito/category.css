@@ -25,10 +25,10 @@
   text-decoration: none;
 }
 .carrito-category > ul li {
-  padding: 5px 5px 1px 5px;
+  padding: 7px 5px 3px 5px;
 } 
 .flag{
-  border-bottom: 2px solid var(--colorRedMain);
+  border-bottom: 3px solid var(--colorRedMain);
 }
 @media (min-width: 800px){
   .carrito-category ul{

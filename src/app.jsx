@@ -3,7 +3,7 @@ import AuthGuard from "./guards/AuthGuard";
 import { PrivateRoutes, PublicRoutes } from "./models/routes";
   import Login from "./pages/Login";
 import RoutesWithNotFount from "./utilities/RoutesWithNotFount";
-import  ApisXpres from "./components/orderCustomer/home/ApisXpres"
+import  Main from "./components/orderCustomer/home/Main"
 import { Suspense, lazy } from "react";
 import Loading from "./components/administrator/loader/Loading";
 const Dashboard = lazy(() => import("./pages/Dashboard"));
@@ -13,10 +13,10 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <RoutesWithNotFount>
-           {/*  <Route
+            <Route
               path="/"
-              element={<ApisXpres />}
-            /> */}
+              element={<Main />}
+            />
             <Route path={PublicRoutes.LOGIN} element={<Login />} />
             <Route element={<AuthGuard />}>
               <Route

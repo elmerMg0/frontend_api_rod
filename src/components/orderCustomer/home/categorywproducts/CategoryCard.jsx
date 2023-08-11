@@ -2,14 +2,15 @@ import "../../../../styles/carrito/categorywproducts.css";
 const APIURLIMG = import.meta.env.VITE_REACT_APP_API_URL_IMG;
 const CategoryCard = ({ categories, setShowOrderDetail, setCategory }) => {
   
+  const hasCategory = categories?.length > 0;
   const handleOnClick = (cat) => {
     setCategory(cat);
     setShowOrderDetail(true)
   }
 
   return (
-    <div className="contenedor">
-      {categories && categories.length > 0 ? (
+    <main className="contenedor">
+      {hasCategory ? (
         categories.map((cat, index) => {
           return (
             <div className="category-card" key={cat.id} id={cat.id}>
@@ -39,7 +40,7 @@ const CategoryCard = ({ categories, setShowOrderDetail, setCategory }) => {
       ) : (
         <p style={{textAlign: 'center'}}>No existen categorias</p>
       )}
-    </div>
+    </main>
   );
 };
 export default CategoryCard;

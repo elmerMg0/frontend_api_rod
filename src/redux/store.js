@@ -3,6 +3,10 @@ import dashboardSliceReducer from '../redux/states/dashboard'
 import carritoSliceReducer from '../redux/states/carrito'
 import carritoUserSliceReducer from '../redux/states/carritoUser'
 import userSliceReducer from '../redux/states/user'
+
+
+//crear middleware
+
 export default configureStore({
     reducer: {
         dashboard: dashboardSliceReducer,

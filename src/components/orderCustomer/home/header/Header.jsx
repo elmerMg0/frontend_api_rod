@@ -1,35 +1,49 @@
-import logoApi from '../../../../assets/img/logoAPi.jpeg'
-import imgCarrito from '../../../../assets/svg/shopCar.svg'
-import search from '../../../../assets/svg/searchGris.svg'
-import '../../../../styles/carrito/header.css'
-import { useSelector } from 'react-redux'
-import { useEffect } from 'react'
-import { useState } from 'react'
-import arrowLeft from '../../../../assets/svg/arrowLeft.svg'
-const Header = ( {setShowProducts, showProducts} ) => {
-  const [totalOrders, setTotalOrders] = useState(0) 
-  const orderDetail = useSelector(store => store.carritoUser);
+import logo from "../../../../assets/img/logo.webp";
+import imgCarrito from "../../../../assets/svg/shopCar.svg";
+import search2 from "../../../../assets/svg/searchGris.svg";
+import "../../../../styles/carrito/header.css";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useState } from "react";
+import { Search } from '../../../global/icons/Icons'
 
-  useEffect(()=> {
-    setTotalOrders  (orderDetail.length);
-  },[orderDetail])
+import Seeker from "./Seeker";
+const Header = ({ setShowProducts, showProducts, setShowSearch, showSearch, setFilters }) => {
+  const [totalOrders, setTotalOrders] = useState(0);
+  const orderDetail = useSelector((store) => store.carritoUser);
+
+  useEffect(() => {
+    setTotalOrders(orderDetail.length);
+  }, [orderDetail]);
 
   const handleShowCarrito = () => {
-    setShowProducts(!showProducts)
-  }
+    setShowProducts(false);
+  };
+
+  const toggleSearch = () => {
+    setShowSearch((prevState) => !prevState);
+    
+  };
   return (
-        <div className='bg-header'>
-          <div>
-            { !showProducts &&  <img src={arrowLeft} alt="icon shop car" onClick={() => setShowProducts(true)}/> }
-          </div>
-          <div className='bg-header__img'>
-            <img src={logoApi} alt='logo api xpress' onClick={() => setShowProducts(true)}/>
-          </div>
-          <div className='bg-header__shopicon' onClick={handleShowCarrito}>
-            <img src={imgCarrito} alt="icon shop car"/>
-            <p>{totalOrders}</p>
-          </div>
+    <section>
+      <header className="bg-header">
+       {/*  <Search onClick={toggleSearch}/> */}
+        <img src={search2} onClick={toggleSearch} />
+
+        <div className="bg-header__img">
+          <img
+            src={logo}
+            alt="logo apis ya"
+            onClick={() => setShowProducts(true)}
+          />
         </div>
+        <div className="bg-header__shopicon" onClick={handleShowCarrito}>
+          <img src={imgCarrito} alt="icon shop car" />
+          <p>{totalOrders}</p>
+        </div>
+      </header>
+       <Seeker setFilters={setFilters} showSearch={showSearch} />
+    </section>
   );
 };
 

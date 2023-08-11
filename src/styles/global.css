@@ -36,8 +36,8 @@
 }
 .footer{
   text-align: center;
-  background-color: var(--colorRedMain);
-  color: var(--colorWhite);
+ /*  background-color: var(--colorRedMain); */
+  color: var(--colorGris);
   padding: 15px;
   margin-top: 20px;
   font-size: 14px;

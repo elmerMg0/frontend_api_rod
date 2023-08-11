@@ -87,6 +87,7 @@ const ModalSendDetail = ({ setShow, infoBussines, sendOrder, showSpinner, active
   };
 
   const handleNext = () => {
+    console.log(infoDetailSale);
     if (infoDetailSale.address === "" && infoDetailSale.pickup === false) {
       setInputsRequired({ ...inputsRequired, ...{ address: true } });
     } else {
@@ -109,7 +110,7 @@ const ModalSendDetail = ({ setShow, infoBussines, sendOrder, showSpinner, active
   };
 
   const address = (
-    <div className="modal-send-detail__address">
+    <div className={ infoDetailSale.delivery ? 'modal-send-detail__address active-delivery': "modal-send-detail__address "}>
       <div>
         <h5 htmlFor="address">Direccion de Entrega*</h5>
         <input
@@ -138,8 +139,8 @@ const ModalSendDetail = ({ setShow, infoBussines, sendOrder, showSpinner, active
   );
 
   const timeDelivery = (
-    <div>
-      <div className="moda-order__time">
+    <div className={ `modal-choose-hour ${infoDetailSale.after ? "active-timer": ''}`}>
+      <div className="modal-order__time">
         <h5 htmlFor="hora">Hora</h5>
         <input
           type="time"
@@ -166,18 +167,20 @@ const ModalSendDetail = ({ setShow, infoBussines, sendOrder, showSpinner, active
               checked={infoDetailSale.delivery}
               value={infoDetailSale.delivery}
               onChange={handleOnChangePay}
+              id='delivery'
             />
-            <label htmlFor="">Delivery</label>
+            <label htmlFor="delivery">Delivery</label>
           </div>
-          <div lassName="modal-send-detail__delivery">
+          <div>
             <input
               type="checkbox"
               name="pickup"
+              id='pickup'
               checked={infoDetailSale.pickup}
               value={infoDetailSale.pickup}
               onChange={handleOnChangePay}
             />
-            <label htmlFor="">Recojo</label>
+            <label htmlFor="pickup">Recojo</label>
           </div>
         </div>
       </div>
@@ -208,16 +211,20 @@ const ModalSendDetail = ({ setShow, infoBussines, sendOrder, showSpinner, active
           </div>
         </div>
       </div>
-      {infoDetailSale.after && timeDelivery}
-
-      {infoDetailSale.delivery ? (
+      {timeDelivery}
+      {address}
+   {/*    {infoDetailSale.delivery ? (
         address
       ) : (
         <div className="address-order">
           <h5>Direccion de recojo</h5>
           <p>{infoBussines.direccion}</p>
         </div>
-      )}
+      )} */}
+        <div className="address-order">
+          <h5>Direccion de recojo</h5>
+          <p>{infoBussines.direccion}</p>
+        </div>
 
       <button className="next" onClick={handleNext}>
         Siguiente
@@ -249,7 +256,7 @@ const ModalSendDetail = ({ setShow, infoBussines, sendOrder, showSpinner, active
         {nroView === 1 && view1}
         {nroView === 2 && (
           <div className={ orderDetail.length > 5 ? "modal-send-order__table": ''}>
-            <div className="modal-send-detail__address">
+            <div className="modal-send-detail__infouser">
               <div>
                 <h5 htmlFor="name">Nombre</h5>
                  <input type="text" name="nombre" value={infoDetailSale.nombre} onChange={handleOnChangeInput}/>
