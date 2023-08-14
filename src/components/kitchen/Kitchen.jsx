@@ -6,7 +6,10 @@ const Kitchen = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    getOrders();
+    const a = setInterval(() => {
+      getOrders();
+    },5000)
+    return (() => clearInterval(a));
   }, []);
 
   const getOrders = async () => {
