@@ -1,5 +1,6 @@
 import React from 'react'
 const APIURLIMG = import.meta.env.VITE_REACT_APP_API_URL_IMG;
+import photoDeault from '../../../assets/img/fotoDeault.webp'
 const PosCategories = ( { categories, getProducts} ) => {
 
   const handleSelectCategory = ( cat ) => {
@@ -15,7 +16,12 @@ const PosCategories = ( { categories, getProducts} ) => {
         categories.map( (cat) => {
           return <div className='pos-category' key={cat.id} onClick={() => handleSelectCategory(cat)}> 
                <h5 className='pos-category__title'>{cat.nombre}</h5>
-               <img src={`${APIURLIMG}${cat.url_image}`} alt="" />
+               {
+                cat.url_image ? 
+                <img src={`${APIURLIMG}${cat.url_image}`} alt="" />
+                :
+                <img src={photoDeault} alt="" />
+               }
             </div>
         })
         :

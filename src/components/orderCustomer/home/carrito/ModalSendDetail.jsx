@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Table } from "react-bootstrap";
+import { Modal, Table } from "react-bootstrap";
 import LoadingRed from "../loader/LoadingRed";
 const initialState = {
   delivery: true,
@@ -31,7 +31,7 @@ const errorInputs = {
 
 const messageError = "*Este campo es requerido"
 
-const ModalSendDetail = ({ setShow, infoBussines, sendOrder, showSpinner, active, setShowModalSuccess }) => {
+const ModalSendDetail = ({ show, setShow, infoBussines, sendOrder, showSpinner, active, setShowModalSuccess }) => {
   const [infoDetailSale, setInfoDetailSale] = useState(initialState);
   const [nroView, setNroView] = useState(1);
   const orderDetail = useSelector((store) => store.carritoUser);
@@ -233,8 +233,9 @@ const ModalSendDetail = ({ setShow, infoBussines, sendOrder, showSpinner, active
   );
 
   return (
-    <div className="modal-send-bg">
-      <div className="modal-send-detail">
+   /*  <div className="modal-send-bg"> */
+      <Modal show={show} centered /* className="modal-send-detail" */ >
+        <section className="modal-main">
         <div className="modal-send-detail__header">
           <div className="modal-send-detail__header-btns">
             <button
@@ -327,8 +328,10 @@ const ModalSendDetail = ({ setShow, infoBussines, sendOrder, showSpinner, active
             </div>
           </div>
         )}
-      </div>
-    </div>
+        </section>
+
+      </Modal>
+  /*   </div> */
   );
 };
 export default ModalSendDetail;

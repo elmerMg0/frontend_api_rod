@@ -79,6 +79,7 @@ const Carrito = ({ setShowProducts, setShowModalSuccess, setMessageModal, active
 
       {showModalUserDetail && (
         <ModalSendDetail
+          show={showModalUserDetail}
           setShow={setShowModalUserDetail}
           infoBussines={infoBussines}
           sendOrder={sendOrder}

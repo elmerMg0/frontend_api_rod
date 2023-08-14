@@ -228,7 +228,7 @@ p{
     overflow: hidden;
     transition: 0.5s all;
     z-index: 50;
-   /*  visibility: hidden; */
+    visibility: hidden;
     padding: 10px 0px;
 }
 .carrito-seeker__input{
@@ -246,11 +246,18 @@ p{
     opacity: 1;
     transform: translateY(0);
     max-height: 120px; 
-    /* visibility: visible; */
+    visibility: visible;
 }
 .seeker-icon-search{
  
 }
 .main{
     margin-top: 20px;
+}
+
+.modal-main{
+    padding: 5px 20px 0px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }

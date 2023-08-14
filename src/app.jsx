@@ -3,9 +3,9 @@ import AuthGuard from "./guards/AuthGuard";
 import { PrivateRoutes, PublicRoutes } from "./models/routes";
   import Login from "./pages/Login";
 import RoutesWithNotFount from "./utilities/RoutesWithNotFount";
-import  Main from "./components/orderCustomer/home/Main"
 import { Suspense, lazy } from "react";
 import Loading from "./components/administrator/loader/Loading";
+import Kitchen from "./components/kitchen/Kitchen";
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 function App() {
   return (
@@ -13,16 +13,20 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <RoutesWithNotFount>
-            <Route
+          {/*   <Route
               path="/"
-              element={<Main />}
-            />
+              element={<Kitchen />}
+            /> */}
             <Route path={PublicRoutes.LOGIN} element={<Login />} />
             <Route element={<AuthGuard />}>
               <Route
                 path={PrivateRoutes.DASHBOARD}
                 element={<Dashboard />}
               ></Route>
+                <Route
+                path="/kitchen"
+                element={<Kitchen />}
+            />
             </Route>
           </RoutesWithNotFount>
         </BrowserRouter>

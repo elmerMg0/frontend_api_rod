@@ -38,7 +38,7 @@ const CategoryCard = ({ categories, setShowOrderDetail, setCategory }) => {
           );
         })
       ) : (
-        <p style={{textAlign: 'center'}}>No existen categorias</p>
+        <p style={{textAlign: 'center'}}></p>
       )}
     </main>
   );

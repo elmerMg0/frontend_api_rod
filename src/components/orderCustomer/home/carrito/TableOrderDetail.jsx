@@ -3,7 +3,7 @@ import { Table } from "react-bootstrap";
 import trashRed from "../../../../assets/svg/trashRed.svg";
 import { useEffect, useState } from "react";
 import { decrementQuantity, deleteProduct, incrementQuantity } from "../../../../redux/states/carritoUser";
-import ModalConfirm from "../../../global/modal/ModalConfirm";
+import ModalConfirm from "../../global/ModalConfirm";
 import { Trash } from "../../../global/icons/Icons";
 const TableOrderDetail = () => {
   const orderDetail = useSelector((store) => store.carritoUser);
@@ -83,7 +83,9 @@ const TableOrderDetail = () => {
                     alt="icon editar"
                     onClick={() => handleDeleteProduct(prod)}
                   /> */}
-                  <Trash/>
+                  <div  onClick={() => handleDeleteProduct(prod)}>
+                    <Trash/>
+                  </div>
                 </td>
               </tr>
             );
