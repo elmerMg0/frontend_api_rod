@@ -25,7 +25,7 @@ const Navegation = () => {
   const dispatch = useDispatch();
   const view = useSelector((store) => store.dashboard);
   const userRole = useSelector((store) => store.user.role);
-  const [navigationWidth, setNavigationWidth] = useState(widthNavigation.max);
+  const [navigationWidth, setNavigationWidth] = useState(widthNavigation.min);
   const [navigationLeft, setNavigationLeft] = useState(false);
   const handleOnClick = (view) => {
     window.localStorage.setItem("view", view);
@@ -207,6 +207,34 @@ const Navegation = () => {
       </div>
     </li>
   );
+
+  const inventaryLink = (
+    <li className={view === "inventary" ? "bg-link" : ""}>
+      <div
+        onClick={() => handleOnClick("inventary")}
+        className="navigation__content"
+      >
+        <img src={historyProducts} alt="svgImg" />
+        <button className="navigation__link" href="">
+          Inventario
+        </button>
+      </div>
+    </li>
+  );
+
+  const inventaryCurrentLink = (
+    <li className={view === "inventaryCurrent" ? "bg-link" : ""}>
+      <div
+        onClick={() => handleOnClick("inventaryCurrent")}
+        className="navigation__content"
+      >
+        <img src={historyProducts} alt="svgImg" />
+        <button className="navigation__link" href="">
+          Inv. Actual
+        </button>
+      </div>
+    </li>
+  );
   return (
     <div
       className="navigation"
@@ -224,6 +252,8 @@ const Navegation = () => {
           {userRole.administrador && reportsLink}
           {userRole.administrador && reportProductLink }
           {userRole && ticketLink}
+          {userRole.administrador && inventaryLink }
+          {userRole.administrador && inventaryCurrentLink }
           {periodLink}
           <button
             className="btn-maxmin"

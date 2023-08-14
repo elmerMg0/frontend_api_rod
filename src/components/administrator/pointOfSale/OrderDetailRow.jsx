@@ -12,6 +12,10 @@ const OrderDetailRow = ({ product }) => {
   const dispatch = useDispatch();
 
   const handlePlusQuantity = () => {
+    if(product.bebida && product.stock === 0){
+      messageToastSucess('Stock Agotado');
+      return;
+    } 
     dispatch(incrementQuantity(product));
   };
 

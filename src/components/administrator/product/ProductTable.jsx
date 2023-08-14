@@ -8,19 +8,19 @@ const ProductTable = ({
   getProducts,
   setProductToEdit,
   setShow,
-  getVarieties,
 }) => {
+
+  const hasProducts = products?.length > 0;
   return (
     <>
       <div className="container-products">
-        {products && products.length > 0 ? (
+        {hasProducts ? (
           products.map((prod) => (
             <ProductTableCard
               key={prod.id}
               product={prod}
               setProductToEdit={setProductToEdit}
               setShow={setShow}
-              getVarieties={getVarieties}
             />
           ))
         ) : (
