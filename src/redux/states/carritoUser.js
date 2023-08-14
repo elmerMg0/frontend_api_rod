@@ -50,7 +50,7 @@ const carritoUser = createSlice({
       const  id  = action.payload;
       const indexProduct = state.findIndex(prod => prod.id === id)
       if( indexProduct !== -1){
-        state[indexProduct].cantidad ++;
+        state[indexProduct].cantidad --;
       }
       persistLocalStorage(keyCarritoUser, state);
       return state;

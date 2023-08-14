@@ -1,4 +1,4 @@
-import logo from "../../../../assets/img/logo.webp";
+import logo from "../../../../assets/img/logoApisYa3.webp";
 import imgCarrito from "../../../../assets/svg/shopCar.svg";
 import search2 from "../../../../assets/svg/searchGris.svg";
 import "../../../../styles/carrito/header.css";
@@ -18,9 +18,13 @@ const Header = ({ setShowProducts, showProducts, setShowSearch, showSearch, setF
 
   const handleShowCarrito = () => {
     setShowProducts(false);
+    setShowSearch(false)
   };
 
   const toggleSearch = () => {
+    if(!showProducts){
+      setShowProducts(true);
+    }
     setShowSearch((prevState) => !prevState);
     
   };
@@ -42,7 +46,7 @@ const Header = ({ setShowProducts, showProducts, setShowSearch, showSearch, setF
           <p>{totalOrders}</p>
         </div>
       </header>
-       <Seeker setFilters={setFilters} showSearch={showSearch} />
+       <Seeker setShowSearch={setShowSearch} setFilters={setFilters} showSearch={showSearch} />
     </section>
   );
 };
