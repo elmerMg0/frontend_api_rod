@@ -73,7 +73,7 @@ p{
 .modal-send-detail__header{
     display: flex;
     justify-content: space-between;
-    padding: 10px 0px;
+    padding: 15px 0px 10px 0px;
     border-bottom: 1px solid black;
 }
 .modal-send-detail__header-btns{
@@ -122,6 +122,39 @@ p{
     display: flex;
     flex-direction: column;
     gap: 15px;
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    transition: 1s all; 
+}
+.active-delivery{
+    opacity: 1;
+    visibility: visible;
+    height: 185px;
+}
+
+.modal-send-detail__infouser{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.modal-send-detail__infouser div h5{
+    font-size: 16px;
+}
+
+.modal-send-detail__infouser div input{
+    width: 100%;
+    border: 1px solid var(--colorGris);
+    padding: 10px;
+}
+
+.modal-send-detail__infouser div textarea{
+    width: 100%;
+    border: 1px solid var(--colorGris);
+    padding: 10px;
+    font-size: 13px;
+    resize: none;
+
 }
 .modal-send-detail__address div h5{
     font-size: 16px;
@@ -159,6 +192,15 @@ p{
     display: flex;
     gap: 15px;
 }
+.modal-choose-hour{
+    height: 0;
+    opacity: 0;
+    transition: 1s all;
+}
+.active-timer{
+    height: 55px;
+    opacity: 1;   
+}
 .modal-order__confirm{
     width: 100%;
 }
@@ -173,4 +215,49 @@ p{
     .modal-send-detail{
         width: 450px;
     }
+}
+.carrito-seeker{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    background-color:var(--colorWhite);
+    opacity: 0;
+    transform: translateY(+100%);
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.5s all;
+    z-index: 50;
+    visibility: hidden;
+    padding: 10px 0px;
+}
+.carrito-seeker__input{
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--colorGris);
+    border-radius: 10px;
+    padding: 1px 10px;
+}
+.carrito-seeker input{
+    width: 100%;
+    border: none;
+}
+.carrito-seeker.show{
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 120px; 
+    visibility: visible;
+}
+.seeker-icon-search{
+ 
+}
+.main{
+    margin-top: 20px;
+}
+
+.modal-main{
+    padding: 5px 20px 0px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../../../styles/administracion/pointOfSale.css";
 import PosCategories from "./PosCategories";
 import PosProducts from "./PosProducts";
@@ -14,6 +14,8 @@ import ViewerPrint from "./ViewerPrint";
 import ModalBeginPeriod from "./ModalBeginPeriod";
 import PosBarLef from "./PosBarLeft";
 import ModalCustomers from "./ModalCustomers";
+import { typeDish } from "../../../utils/constans";
+import { useProduct } from "../../../hooks/useProduct";
 
 /* const detailSale = {
   totalPrice: 0,
@@ -23,7 +25,7 @@ import ModalCustomers from "./ModalCustomers";
 
 const PointOfSale = () => {
   //const PosProducts = lazy(() => import('./PosProducts'));
-  const [products, setProducts] = useState([]);
+  const {products, getProducts} = useProduct()
   const [categories, setCategories] = useState([]);
   const dispatch = useDispatch();
   const orderDetail = useSelector((store) => store.carrito.orderDetail);
@@ -41,6 +43,7 @@ const PointOfSale = () => {
   const [showModalPeriod, setShowModalPeriod] = useState(false);
   const [showModalCustomer, setShowModalCustomer] = useState(false);
   const [customerSelected, setCustomerSelected] = useState('Genérico');
+  const idCategory = useRef();
 
   useEffect(() => {
     getCategories();
@@ -69,15 +72,6 @@ const PointOfSale = () => {
     }
   };
 
-  const getProducts = async (idCategory) => {
-    let url = "categoria/get-products-by-category/?";
-    let params = `idCategory=${idCategory}`;
-    const { success, products } = await APISERVICE.get(url, params);
-    if (success) {
-      setProducts(products);
-    }
-  };
-
   const addProductOrder = (product) => {
     dispatch(updateCarrito(product));
   };
@@ -98,13 +92,18 @@ const PointOfSale = () => {
 
     const { success, sale } = await APISERVICE.post(body, url, params);
     if (success) {
-      setShowViewer(true); //motrar PDFViever con la informacion de la venta
-      setInfoSale(sale);
-      toast.success("Pedido enviado correctamente");
+      /* setShowViewer(true); //motrar PDFViever con la informacion de la venta */
+      /* setInfoSale(sale); */
+      messageToastSucess("Pedido enviado correctamente");
       //generatePDF();
-      setShowModal(false);
+     /*  setShowModal(false); */
+     getProducts(idCategory.current)
+     cleanCarrito()
     }
   };
+  const messageToastSucess = (message) => {
+    toast.success(message)
+  }
 
   const settotalPrice = () => {
     let totalPrice = orderDetail.reduce(
@@ -129,7 +128,7 @@ const PointOfSale = () => {
       <div className="pos-content">
         <PosBarLef setShow={setShowModalCustomer} />
         <PosAcount totalPrice={totalPrice} accumulate={accumulateAcount} customer={customerSelected}/>
-        <PosCategories categories={categories} getProducts={getProducts} />
+        <PosCategories categories={categories} getProducts={getProducts} idCategory={idCategory}/>
         <PosProducts products={products} addProductOrder={addProductOrder} />
       </div>
       <PosPay

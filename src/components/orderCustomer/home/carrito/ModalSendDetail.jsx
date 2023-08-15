@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Table } from "react-bootstrap";
+import { Modal, Table } from "react-bootstrap";
 import LoadingRed from "../loader/LoadingRed";
 const initialState = {
   delivery: true,
@@ -31,7 +31,7 @@ const errorInputs = {
 
 const messageError = "*Este campo es requerido"
 
-const ModalSendDetail = ({ setShow, infoBussines, sendOrder, showSpinner, active, setShowModalSuccess }) => {
+const ModalSendDetail = ({ show, setShow, infoBussines, sendOrder, showSpinner, active, setShowModalSuccess }) => {
   const [infoDetailSale, setInfoDetailSale] = useState(initialState);
   const [nroView, setNroView] = useState(1);
   const orderDetail = useSelector((store) => store.carritoUser);
@@ -87,6 +87,7 @@ const ModalSendDetail = ({ setShow, infoBussines, sendOrder, showSpinner, active
   };
 
   const handleNext = () => {
+    console.log(infoDetailSale);
     if (infoDetailSale.address === "" && infoDetailSale.pickup === false) {
       setInputsRequired({ ...inputsRequired, ...{ address: true } });
     } else {
@@ -109,7 +110,7 @@ const ModalSendDetail = ({ setShow, infoBussines, sendOrder, showSpinner, active
   };
 
   const address = (
-    <div className="modal-send-detail__address">
+    <div className={ infoDetailSale.delivery ? 'modal-send-detail__address active-delivery': "modal-send-detail__address "}>
       <div>
         <h5 htmlFor="address">Direccion de Entrega*</h5>
         <input
@@ -138,8 +139,8 @@ const ModalSendDetail = ({ setShow, infoBussines, sendOrder, showSpinner, active
   );
 
   const timeDelivery = (
-    <div>
-      <div className="moda-order__time">
+    <div className={ `modal-choose-hour ${infoDetailSale.after ? "active-timer": ''}`}>
+      <div className="modal-order__time">
         <h5 htmlFor="hora">Hora</h5>
         <input
           type="time"
@@ -166,18 +167,20 @@ const ModalSendDetail = ({ setShow, infoBussines, sendOrder, showSpinner, active
               checked={infoDetailSale.delivery}
               value={infoDetailSale.delivery}
               onChange={handleOnChangePay}
+              id='delivery'
             />
-            <label htmlFor="">Delivery</label>
+            <label htmlFor="delivery">Delivery</label>
           </div>
-          <div lassName="modal-send-detail__delivery">
+          <div>
             <input
               type="checkbox"
               name="pickup"
+              id='pickup'
               checked={infoDetailSale.pickup}
               value={infoDetailSale.pickup}
               onChange={handleOnChangePay}
             />
-            <label htmlFor="">Recojo</label>
+            <label htmlFor="pickup">Recojo</label>
           </div>
         </div>
       </div>
@@ -208,16 +211,20 @@ const ModalSendDetail = ({ setShow, infoBussines, sendOrder, showSpinner, active
           </div>
         </div>
       </div>
-      {infoDetailSale.after && timeDelivery}
-
-      {infoDetailSale.delivery ? (
+      {timeDelivery}
+      {address}
+   {/*    {infoDetailSale.delivery ? (
         address
       ) : (
         <div className="address-order">
           <h5>Direccion de recojo</h5>
           <p>{infoBussines.direccion}</p>
         </div>
-      )}
+      )} */}
+        <div className="address-order">
+          <h5>Direccion de recojo</h5>
+          <p>{infoBussines.direccion}</p>
+        </div>
 
       <button className="next" onClick={handleNext}>
         Siguiente
@@ -226,8 +233,9 @@ const ModalSendDetail = ({ setShow, infoBussines, sendOrder, showSpinner, active
   );
 
   return (
-    <div className="modal-send-bg">
-      <div className="modal-send-detail">
+   /*  <div className="modal-send-bg"> */
+      <Modal show={show} centered /* className="modal-send-detail" */ >
+        <section className="modal-main">
         <div className="modal-send-detail__header">
           <div className="modal-send-detail__header-btns">
             <button
@@ -249,7 +257,7 @@ const ModalSendDetail = ({ setShow, infoBussines, sendOrder, showSpinner, active
         {nroView === 1 && view1}
         {nroView === 2 && (
           <div className={ orderDetail.length > 5 ? "modal-send-order__table": ''}>
-            <div className="modal-send-detail__address">
+            <div className="modal-send-detail__infouser">
               <div>
                 <h5 htmlFor="name">Nombre</h5>
                  <input type="text" name="nombre" value={infoDetailSale.nombre} onChange={handleOnChangeInput}/>
@@ -320,8 +328,10 @@ const ModalSendDetail = ({ setShow, infoBussines, sendOrder, showSpinner, active
             </div>
           </div>
         )}
-      </div>
-    </div>
+        </section>
+
+      </Modal>
+  /*   </div> */
   );
 };
 export default ModalSendDetail;

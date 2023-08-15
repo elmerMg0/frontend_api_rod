@@ -1,72 +1,52 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { typeDish } from '../../utils/constans';
+import { keyCarritoUser } from './carritoUser';
 
 const initialState = { orderDetail: []} 
+export const KeyLocalStorate = 'carrito'
+
+const validateStock = (product, productStore=null) => {
+    if(product.tipo !== typeDish.BEBIDA) return false;
+    if(!productStore) return product.stock === 0; 
+    return  productStore.cantidad >= product.stock;
+}
+
 const carritoSlice = createSlice({
     name: 'carrito',
-    initialState: localStorage.getItem('carrito') ? JSON.parse(localStorage.getItem('carrito')) : initialState,
+    initialState: localStorage.getItem(keyCarritoUser) ? JSON.parse(localStorage.getItem(keyCarritoUser)) : initialState,
     reducers: {
         createCarrito: (action ) => {
             return action.payload;
         },
         updateCarrito: (state, action ) => {
-            let product = action.payload;
-            let exists = state.orderDetail.some( prod => prod.id === product.id);
-            if(exists){
-                state.orderDetail.map( prod => {
-                    if(prod.id === product.id){
-                        prod.cantidad += 1;
-                    }
-                })
-                state.orderDetail = [...state.orderDetail];
-                //increment quantity;
+            const product = action.payload;
+            const indexProduct = state.orderDetail.findIndex(prod => prod.id === product.id);
+            if(indexProduct !== -1){
+                if(validateStock( product, state.orderDetail[indexProduct]))return
+                state.orderDetail[indexProduct].cantidad++;
             }else{
-                if( !product.cantidad ){
-                    product.cantidad = 1;
-                }
-                state.orderDetail = [...state.orderDetail, product]
+                if(validateStock(product))return
+                state.orderDetail = [...state.orderDetail, {...product, cantidad: 1}];
             }
-            const save = {
-                orderDetail: state.orderDetail
-            }
-            window.localStorage.setItem('carrito', JSON.stringify( save ));
         },
         decreaseQuantity: (state, action) => {
-            let product = action.payload;
-            state.orderDetail.map( prod => {
-                if(prod.id === product.id && prod.cantidad > 1){
-                    prod.cantidad -= 1;
-                }
-            })
-            state.orderDetail = [...state.orderDetail];
-            const save = {
-                orderDetail: state.orderDetail
-            }
-            window.localStorage.setItem('carrito', JSON.stringify(save));
+            const { id, cantidad } = action.payload;
+            const indexProduct = state.orderDetail.findIndex(prod => prod.id == id)
+            if( indexProduct !== -1 && cantidad > 1 ) state.orderDetail[indexProduct].cantidad--;
         },
 
         incrementQuantity: (state, action) => {
-            let product = action.payload;
-            state.orderDetail.map( prod => {
-                if(prod.id === product.id && prod.cantidad < 30){
-                    prod.cantidad += 1;
-                }
-            })
-            state.orderDetail = [...state.orderDetail];
-            const save = {
-                orderDetail: state.orderDetail
-            }
-            window.localStorage.setItem('carrito', JSON.stringify(save));
+            const product = action.payload;
+            const indexProduct = state.orderDetail.findIndex(prod => prod.id == product.id)
+            if(validateStock(product, state.orderDetail[indexProduct]))return
+            if( indexProduct !== -1) state.orderDetail[indexProduct].cantidad++;
         },
         deleteProduct: (state, action) => {
-            let product = action.payload;
+            const product = action.payload;
             state.orderDetail = state.orderDetail.filter(prod => prod.id !== product.id);
-            const save = {
-                orderDetail: state.orderDetail
-            }
-            window.localStorage.setItem('carrito', JSON.stringify(save))
         },
         deleteCarrito: (state) => {
-            window.localStorage.removeItem('carrito');
+            window.localStorage.removeItem(KeyLocalStorate);
             state.orderDetail = []
         }
     }

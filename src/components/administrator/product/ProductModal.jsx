@@ -8,9 +8,10 @@ const initialState = {
   precio_compra: "",
   descripcion: "",
   estado: '',
-  categoria: '',
+  categoria_id: '',
   url_image: "",
   cortesia: '',
+  tipo: ''
 };
 
 const ProductModal = ({
@@ -21,33 +22,32 @@ const ProductModal = ({
   setProductToEdit,
   updateProduct,
   categories,
-  setVarietiesProduct,
-  deleteProduct,
 }) => {
   const [product, setProduct] = useState(initialState);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [varieties, setVarieties] = useState([]);
+  
   useEffect(() => {
-    if (productToEdit && Object.keys(productToEdit).length !== 0) {
-      const stateCurrent = productToEdit.cortesia ? 'Activo' : 'Inactivo';
-      setProduct({...productToEdit, 'cortesia': stateCurrent});
-    } else {
-      setProduct(initialState);
+    console.log(productToEdit)
+    if(Object.keys(productToEdit).length === 0){
+      setProduct(initialState)
+    }else{
+      setProduct({...productToEdit});
     }
  
   }, [show]);
 
   const handleConfirm = () => {
-    setShow(false);
+    console.log(product)
+    const cortesia = product.cortesia === 'Activo' ? 1: 0;
     if (!product.id) {
-      create(product, selectedImage, varieties);
+      create({...product, cortesia: cortesia}, selectedImage);
     } else {
-      updateProduct(product, selectedImage, varieties);
+      updateProduct({...product, cortesia: cortesia}, selectedImage);
     }
+    setShow(false);
     setProductToEdit({});
     setSelectedImage(null);
-    setVarieties([]);
-    setVarietiesProduct([]);
+    ([]);
   };
   const handleOnChange = (e) => {
     setProduct({
@@ -57,10 +57,9 @@ const ProductModal = ({
   };
 
   const handleCancel = () => {
-    setShow(false);
     setProductToEdit({});
-    setVarieties([]);
-    setVarietiesProduct([]);
+    setShow(false);
+    setProduct(initialState)
   };
 
   const handleImageChange = (event) => {
@@ -77,11 +76,6 @@ const ProductModal = ({
     }
   };
 
-/*   const handleDeleteProduct = () => {
-    deleteProduct(product.id);
-    setShow(false);
-  }; */
-
   return (
     <Modal show={show} size="md" centered backdrop>
       <Modal.Header>
@@ -95,7 +89,7 @@ const ProductModal = ({
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <InputGroup className="mb-2">
+        <InputGroup className="mb-1">
           <InputGroup.Text>Nombre</InputGroup.Text>
           <Form.Control
             placeholder="Nombre"
@@ -106,7 +100,7 @@ const ProductModal = ({
             required
           />
         </InputGroup>
-        <InputGroup className="mb-2">
+        <InputGroup className="mb-1">
           <InputGroup.Text>Precio de venta</InputGroup.Text>
           <Form.Control
             placeholder="Precio de venta"
@@ -116,7 +110,7 @@ const ProductModal = ({
             value={product.precio_venta}
           />
         </InputGroup>
-        <InputGroup className="mb-2">
+        <InputGroup className="mb-1">
           <InputGroup.Text>Precio de compra</InputGroup.Text>
           <Form.Control
             placeholder="Precio de compra"
@@ -126,7 +120,7 @@ const ProductModal = ({
             value={product.precio_compra}
           />
         </InputGroup>
-        <InputGroup className="mb-2">
+        <InputGroup className="mb-1">
           <InputGroup.Text>Descripción</InputGroup.Text>
           <Form.Control
             placeholder="Descripción"
@@ -137,7 +131,7 @@ const ProductModal = ({
           />
         </InputGroup>
         
-        <InputGroup className="mb-2">
+        <InputGroup className="mb-1">
           <InputGroup.Text>Estado</InputGroup.Text>
           <Form.Select
             value={product.estado}
@@ -152,12 +146,11 @@ const ProductModal = ({
           </Form.Select>
         </InputGroup>
 
-        <InputGroup className="mb-2">
+        <InputGroup className="mb-1">
           <InputGroup.Text>Categoria</InputGroup.Text>
           <Form.Select
-            value={product.categoria}
-            name="categoria"
-            id='categoria'
+            name="categoria_id"
+            id='categoria_id'coonst
             onChange={handleOnChange}
           >{
             product.id ? 
@@ -173,23 +166,44 @@ const ProductModal = ({
           </Form.Select>
         </InputGroup>
 
-        <InputGroup className="mb-2">
+        <InputGroup className="mb-1">
           <InputGroup.Text>Cortesia</InputGroup.Text>
           <Form.Select
-            value={product.cortesia}
             name="cortesia"
             id='cortesia'
             onChange={handleOnChange}
           >
-            <option selected >Seleccione una opción</option>
+            {
+              product.id ?
+              <option selected > {product.cortesia ? 'Activo': 'Inactivo'} </option>
+              :
+              <option selected > Seleccione una opción</option>
+
+            }
             <option value='Activo'>Activo</option>
             <option value='Inactivo'>Inactivo</option>
             
           </Form.Select>
         </InputGroup>
 
+        <InputGroup className="mb-1">
+          <InputGroup.Text>Tipo</InputGroup.Text>
+          <Form.Select
+            value={product.tipo}
+            name="tipo"
+            id='tipo'
+            onChange={handleOnChange}
+          >
+            <option selected >Seleccione una opción</option>
+            <option value='comida'>Comida</option>
+            <option value='bebida'>bebida</option>
+            
+          </Form.Select>
+        </InputGroup>
 
-        <InputGroup className="mb-2">
+
+
+        <InputGroup className="mb-1">
           <Form.Control
             placeholder="pique.jpg"
             type="file"
@@ -224,7 +238,7 @@ const ProductModal = ({
           <button
             className="btn-main-red"
             onClick={() => handleDeleteProduct()}
-          >
+          >setProductToEdit
             Eliminar
           </button>
         )} */}

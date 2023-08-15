@@ -1,17 +1,20 @@
 import React from "react";
-import plus from "../../../assets/svg/plus.svg";
-import minus from "../../../assets/svg/minus.svg";
 import { useDispatch } from "react-redux";
 import {
   incrementQuantity,
   decreaseQuantity,
   deleteProduct,
 } from "../../../redux/states/carrito";
-import trash from "../../../assets/svg/trash.svg";
+import { DecrementIcon, PlusIcon, TrashIcon } from "../../icon/Icons";
+import { color } from "../../../utils/constans";
 const OrderDetailRow = ({ product }) => {
   const dispatch = useDispatch();
 
   const handlePlusQuantity = () => {
+    if(product.bebida && product.stock === 0){
+      messageToastSucess('Stock Agotado');
+      return;
+    } 
     dispatch(incrementQuantity(product));
   };
 
@@ -28,7 +31,7 @@ const OrderDetailRow = ({ product }) => {
       <td>
         {" "}
         <button className="btn-main-red" onClick={handleDeleteProduct}>
-          <img src={trash} alt="" />
+          <TrashIcon color={color.WHITE}/>
         </button>
       </td>
       <td>{product.cantidad}</td>
@@ -36,10 +39,10 @@ const OrderDetailRow = ({ product }) => {
       <td style={{textAlign: 'right'}}>{`${product.precio_venta * product.cantidad}`}</td>
       <td className="btns-quantity">
         <button onClick={() => handlePlusQuantity()}>
-          <img src={plus} alt="" />
+          <PlusIcon/>
         </button>{" "}
         <button onClick={() => handleMinusQuantity()}>
-          <img src={minus} alt="" />
+          <DecrementIcon/>
         </button>
       </td>
     </tr>

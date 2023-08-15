@@ -11,6 +11,9 @@
     --colorSend: #07eaff;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
 .btn-main-send {
     color: var(--colorWhite);
     background-color: var(--colorSend);
@@ -188,4 +191,10 @@
     color: var(--colorWhite);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: 500;
+ }
+
+ /* Tittle */
+ .title{
+    color: var(--colorMain);
+    font-weight: 600;
  }

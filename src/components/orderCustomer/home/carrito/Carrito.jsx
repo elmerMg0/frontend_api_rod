@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { APISERVICE } from "../../../../services/api.services";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCarritoUser } from "../../../../redux/states/carritoUser";
-import { messages } from "../ApisXpres";
+import { messages } from "../Main";
 
 const Carrito = ({ setShowProducts, setShowModalSuccess, setMessageModal, active}) => {
   const [showModalUserDetail, setShowModalUserDetail] = useState(false);
@@ -79,6 +79,7 @@ const Carrito = ({ setShowProducts, setShowModalSuccess, setMessageModal, active
 
       {showModalUserDetail && (
         <ModalSendDetail
+          show={showModalUserDetail}
           setShow={setShowModalUserDetail}
           infoBussines={infoBussines}
           sendOrder={sendOrder}

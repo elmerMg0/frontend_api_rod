@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import bussines from "../../../assets/svg/bussines.svg";
+import { Bussines, CategoryIcon, HistoryProductsIcon, PeriodIcon, PosIcon, ReportIcon, TicketIcon, TrolleyIcon, UsersIcon } from "../../icon/Icons";
 import customer from "../../../assets/svg/customer.svg";
 import users from "../../../assets/svg/users.svg";
 import product from "../../../assets/svg/product.svg";
+import { ProductsIcon } from "../../icon/Icons";
 import category from "../../../assets/svg/category.svg";
 import pos from "../../../assets/svg/pos.svg";
 import report from "../../../assets/svg/report.svg";
@@ -15,7 +17,7 @@ import period from '../../../assets/svg/period.svg';
 import ticket from "./../../../assets/svg/ticket.svg";
 import trolley from "./../../../assets/svg/trolley.svg";
 import '../../../styles/administracion/navigation.css'
-
+import { CurrentInventary } from "../../icon/Icons";
 const widthNavigation = {
     min: 65,
     max: 167
@@ -25,7 +27,7 @@ const Navegation = () => {
   const dispatch = useDispatch();
   const view = useSelector((store) => store.dashboard);
   const userRole = useSelector((store) => store.user.role);
-  const [navigationWidth, setNavigationWidth] = useState(widthNavigation.max);
+  const [navigationWidth, setNavigationWidth] = useState(widthNavigation.min);
   const [navigationLeft, setNavigationLeft] = useState(false);
   const handleOnClick = (view) => {
     window.localStorage.setItem("view", view);
@@ -49,6 +51,7 @@ const Navegation = () => {
         className="navigation__content"
       >
         <img src={bussines} alt="svgImg" />
+        {/* <Bussines/> */}
         <button className="navigation__link" to="/">
           Empresa
         </button>
@@ -63,6 +66,7 @@ const Navegation = () => {
         className="navigation__content"
       >
         <img src={users} alt="svgImg" />
+       {/*  <UsersIcon/> */}
         <button className="navigation__link" href="">
           Usuarios
         </button>
@@ -92,6 +96,7 @@ const Navegation = () => {
         className="navigation__content"
       >
         <img src={product} alt="svgImg" />
+        {/* <ProductsIcon/> */}
         <button className="navigation__link" href="">
           Productos
         </button>
@@ -106,6 +111,7 @@ const Navegation = () => {
         className="navigation__content"
       >
         <img src={category} alt="svgImg" />
+       {/*  <CategoryIcon/> */}
         <button className="navigation__link" href="">
           Categorias
         </button>
@@ -120,6 +126,7 @@ const Navegation = () => {
         className="navigation__content"
       >
         <img src={trolley} alt="svgImg" />
+       {/* <TrolleyIcon/> */}
         <button className="navigation__link" href="">
           App
         </button>
@@ -131,6 +138,7 @@ const Navegation = () => {
     <li className={view === "pos" ? "bg-link" : ""}>
       <div onClick={() => handleOnClick("pos")} className="navigation__content">
         <img src={pos} alt="svgImg" />
+        {/* <PosIcon/> */}
         <button className="navigation__link" href="">
           Pos
         </button>
@@ -145,27 +153,14 @@ const Navegation = () => {
         className="navigation__content"
       >
         <img src={report} alt="svgImg" />
+      {/* <ReportIcon/> */}
         <button className="navigation__link" href="">
           Reportes
         </button>
       </div>
     </li>
   );
-/* 
-  const helpLink = (
-    <li className={view === "help" ? "bg-link" : ""}>
-      <div
-        onClick={() => handleOnClick("help")}
-        className="navigation__content"
-      >
-        <img src={help} alt="svgImg" />
-        <button className="navigation__link" href="">
-          Ayuda
-        </button>
-      </div>
-    </li>
-  );
- */
+
   const ticketLink = (
     <li className={view === "saleHistory" ? "bg-link" : ""}>
       <div
@@ -173,6 +168,7 @@ const Navegation = () => {
         className="navigation__content"
       >
         <img src={ticket} alt="svgImg" />
+        {/* <TicketIcon/> */}
         <button className="navigation__link" href="">
           Historial
         </button>
@@ -187,6 +183,7 @@ const Navegation = () => {
         className="navigation__content"
       >
         <img src={period} alt="svgImg" />
+       {/* <PeriodIcon/> */}
         <button className="navigation__link" href="">
           Periodo
         </button>
@@ -203,6 +200,36 @@ const Navegation = () => {
         <img src={historyProducts} alt="svgImg" />
         <button className="navigation__link" href="">
           Reporte Producto
+        </button>
+      </div>
+    </li>
+  );
+
+  const inventaryLink = (
+    <li className={view === "inventary" ? "bg-link" : ""}>
+      <div
+        onClick={() => handleOnClick("inventary")}
+        className="navigation__content"
+      >
+        <img src={historyProducts} alt="svgImg" />
+     {/*   <HistoryProductsIcon/> */}
+        <button className="navigation__link" href="">
+          Inventario
+        </button>
+      </div>
+    </li>
+  );
+
+  const inventaryCurrentLink = (
+    <li className={view === "inventaryCurrent" ? "bg-link" : ""}>
+      <div
+        onClick={() => handleOnClick("inventaryCurrent")}
+        className="navigation__content"
+      >
+        <img src={historyProducts} alt="svgImg" />
+        {/* <CurrentInventary/> */}
+        <button className="navigation__link" href="">
+          Inv. Actual
         </button>
       </div>
     </li>
@@ -224,6 +251,8 @@ const Navegation = () => {
           {userRole.administrador && reportsLink}
           {userRole.administrador && reportProductLink }
           {userRole && ticketLink}
+          {userRole.administrador && inventaryLink }
+          {userRole.administrador && inventaryCurrentLink }
           {periodLink}
           <button
             className="btn-maxmin"

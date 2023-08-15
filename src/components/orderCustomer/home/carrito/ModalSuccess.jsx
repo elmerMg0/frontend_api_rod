@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
-import { messages } from "../ApisXpres";
+import { messages } from "../Main";
 const ModalConfirm = ({ show, onHide, deleteSomething, message }) => {
   return (
     <Modal show={show} centered>

@@ -9,12 +9,10 @@ const ProductTableCard = ({
   product,
   setProductToEdit,
   setShow,
-  getVarieties,
 }) => {
   const handleShowMore = () => {
     setProductToEdit(product);
-    getVarieties(product.id);
-    //setShow(true);
+    setShow(true);
   };
 
   return (
