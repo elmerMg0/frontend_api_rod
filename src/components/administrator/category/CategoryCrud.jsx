@@ -128,7 +128,7 @@ const CategoryCrud = () => {
 
   return (
     <div className="category">
-      <h3>Categorias</h3>
+      <h3 className="title">Categorias</h3>
       <SearchInput setShow={setShow} filterSomething={filtercategories} placeHolder='Nombre de categoria' />
       {categoriesFilter.length > 0 || inputSearchCategory.length > 0? (
         <CategoryTable

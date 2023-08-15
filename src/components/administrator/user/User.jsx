@@ -121,7 +121,7 @@ export default function User() {
   return (
     <>
       <div className="conteiner-user">
-        <h3>Usuarios</h3>
+        <h3 className="title">Usuarios</h3>
         <SearchInput
           setShow={setModalShow}
           filterSomething={filterUser}

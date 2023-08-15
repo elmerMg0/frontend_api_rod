@@ -41,7 +41,7 @@ export default function Company() {
   }, []);
   return (
     <div className="bussiness">
-      <h3>Empresa</h3>
+      <h3 className="title">Empresa</h3>
       <FormCompany company={company} updateCompany={updateCompany} />
       <Toaster position="top-right" reverseOrder={false} />
     </div>

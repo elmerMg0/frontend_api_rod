@@ -111,7 +111,7 @@ const SaleHistory = () => {
 
   return (
     <div className="sale-history">
-      <h3 style={{marginBottom: '15px'}}>Historial de Ventas</h3>
+      <h3 className="title" style={{marginBottom: '15px'}}>Historial de Ventas</h3>
       {
         user.role.administrador &&
         <SeekerSales

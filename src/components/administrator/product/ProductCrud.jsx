@@ -54,24 +54,12 @@ const CategoryCrud = () => {
     }
   };
 
-  const createNewProduct = async (product, image, varieties) => {
-    //envio de info en body
+  const createNewProduct = async (product, image) => {
     let url = "producto/create/?";
     const formData = new FormData();
-    let data = {
-      nombre: product.nombre,
-      descripcion: product.descripcion,
-      precio_venta: product.precio_venta,
-      precio_compra: product.precio_compra,
-      estado: product.estado,
-      categoria_id: product.categoria,
-      tipo: "comida",
-      cortesia: product.cortesia === 'Activo' ? 1 : 0,
-      stock: 0
-    };
-    formData.append("data", JSON.stringify(data));
+    formData.append("data", JSON.stringify(product));
     if (image) formData.append("file", product.url_image);
-    let params = `idCategory=${product.categoria}`;
+    let params = `idCategory=${product.categoria_id}`;
     const { success, message } = await APISERVICE.postWithImage(formData, url, params);
     if ( success ) {
       messageToast(message);
@@ -91,6 +79,7 @@ const CategoryCrud = () => {
   };
 
   const updateProduct = async (product, image) => {
+    console.log(product)
     let $url = `producto/update?`;
     let $params = `idProduct=${product.id}`;
     const fd = new FormData();
@@ -99,6 +88,7 @@ const CategoryCrud = () => {
     const {success, message} = await APISERVICE.postWithImage(fd, $url, $params);
     if (success) {
       messageToast(message);
+      setProductToEdit({});
       getProducts();
       getProductsAll();
     }else{
@@ -140,7 +130,7 @@ const CategoryCrud = () => {
 
   return (
     <div className="product">
-      <h3>Productos</h3>
+      <h3 className="title">Productos</h3>
       <SearchInput
         setShow={setShow}
         filterSomething={filterproducts}

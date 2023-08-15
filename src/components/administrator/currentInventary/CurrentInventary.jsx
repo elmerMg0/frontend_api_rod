@@ -22,7 +22,7 @@ const CurrentInventary = () => {
 
   return (
     <div className='currentInventary'>
-        <h5>Inventario Actual</h5>
+        <h3>Inventario Actual</h3>
         <CurrentInventaryTable inventaries={inventaries} pageInfo={pageInfo} getInventaries={getCurrentInventaries}/>
     </div>
   )
