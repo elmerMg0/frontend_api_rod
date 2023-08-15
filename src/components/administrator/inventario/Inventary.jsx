@@ -52,11 +52,11 @@ const Inventary = () => {
   return (
     <MyContext.Provider value={{productsToEdit, setProductsToEdit, createInventary}}>
         <section className='inventary'>
-            <h5>Inventarios</h5>
+            <h3 className='title'>Inventarios</h3>
             <Seeker products={products}/>
             <ProductTable products={productsToEdit} createInventary={createInventary}/>
             <button className='btn-main mb-4 mt-2' onClick={createInventary}>Guardar</button>
-            <h5>Registro de inventarios</h5>
+            <h3 className='title'>Registro de inventarios</h3>
             <InventaryTable inventaries={inventaries} pageInfo={pageInfo} getInventaries={getInventaries}/>
         </section>
     </MyContext.Provider>

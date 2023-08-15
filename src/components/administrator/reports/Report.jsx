@@ -105,7 +105,7 @@ const Report = () => {
 
   return (
     <div className="report">
-      <h3>Reportes</h3>
+      <h3 className="title">Reportes</h3>
       <ButtonsReport setShowReport={setShowReport} />
       {showReport === reports.grafics && grafics}
       {showReport === reports.ventas && sales}

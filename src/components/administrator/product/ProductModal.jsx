@@ -28,12 +28,16 @@ const ProductModal = ({
   
   useEffect(() => {
     console.log(productToEdit)
-    if(Object.keys(productToEdit).length === 0) return
-    setProduct({...productToEdit});
+    if(Object.keys(productToEdit).length === 0){
+      setProduct(initialState)
+    }else{
+      setProduct({...productToEdit});
+    }
  
   }, [show]);
 
   const handleConfirm = () => {
+    console.log(product)
     const cortesia = product.cortesia === 'Activo' ? 1: 0;
     if (!product.id) {
       create({...product, cortesia: cortesia}, selectedImage);

@@ -41,7 +41,7 @@ const ReportProduct = () => {
   return (
     <section className="report-product">
       <section className="report-product__header">
-        <h3 style={{ marginBottom: "20px" }}>Reportes de Producto</h3>
+        <h3 className="title" style={{ marginBottom: "20px" }}>Reportes de Producto</h3>
         <div className="report-header-seekers">
           <input
             type="date"
