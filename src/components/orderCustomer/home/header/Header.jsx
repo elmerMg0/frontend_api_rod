@@ -5,7 +5,7 @@ import "../../../../styles/carrito/header.css";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Search } from '../../../global/icons/Icons'
+import { Search, ShopCarIcon } from '../../../global/icons/Icons'
 
 import Seeker from "./Seeker";
 const Header = ({ setShowProducts, showProducts, setShowSearch, showSearch, setFilters }) => {
@@ -17,7 +17,7 @@ const Header = ({ setShowProducts, showProducts, setShowSearch, showSearch, setF
   }, [orderDetail]);
 
   const handleShowCarrito = () => {
-    setShowProducts(false);
+    setShowProducts(prevState => !prevState);
     setShowSearch(false)
   };
 
@@ -31,9 +31,9 @@ const Header = ({ setShowProducts, showProducts, setShowSearch, showSearch, setF
   return (
     <section>
       <header className="bg-header">
-       {/*  <Search onClick={toggleSearch}/> */}
-        <img src={search2} onClick={toggleSearch} />
-
+        <div  onClick={toggleSearch}>
+          <Search/>
+        </div>
         <div className="bg-header__img">
           <img
             src={logo}
@@ -42,8 +42,10 @@ const Header = ({ setShowProducts, showProducts, setShowSearch, showSearch, setF
           />
         </div>
         <div className="bg-header__shopicon" onClick={handleShowCarrito}>
-          <img src={imgCarrito} alt="icon shop car" />
-          <p>{totalOrders}</p>
+         <ShopCarIcon/>
+         <div className="bg-header__shopicon-total">
+           <p >{totalOrders}</p>
+         </div>
         </div>
       </header>
        <Seeker setShowSearch={setShowSearch} setFilters={setFilters} showSearch={showSearch} />

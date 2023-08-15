@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 import { APISERVICE } from "../../../../services/api.services";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCarritoUser } from "../../../../redux/states/carritoUser";
-import { messages } from "../Main";
+import { messages } from "../Ecommerce";
+import { toast, Toaster } from "react-hot-toast";
 
 const Carrito = ({ setShowProducts, setShowModalSuccess, setMessageModal, active}) => {
   const [showModalUserDetail, setShowModalUserDetail] = useState(false);
@@ -26,7 +27,6 @@ const Carrito = ({ setShowProducts, setShowModalSuccess, setMessageModal, active
   };
 
   const sendOrder = async (data, total) => {
-    setShowSpinner(true);
     const infoOrder = {
       tipo_entrega: data.delivery ? "delivery" : "recojo",
       hora: data.hour === "" ? "Ahora mismo" : data.hour,
@@ -41,18 +41,25 @@ const Carrito = ({ setShowProducts, setShowModalSuccess, setMessageModal, active
       cantidadPagada: total,
       tipoPago: "efectivo",
     };
-    const url = "api/create";
-    const { success } = await APISERVICE.post(infoOrder, url);
-    if(success){
-      setMessageModal(messages.SMSSUCCES)
-      setShowModalUserDetail(false);
-      dispatch(deleteCarritoUser())
-      setShowProducts(true);
-      setShowModalSuccess(true);
-    }else{
-
+    try {
+      setShowSpinner(true);
+      const url = "api/create3424";
+      const { success, message } = await APISERVICE.post(infoOrder, url);
+      if(success){
+        setMessageModal(messages.SMSSUCCES)
+        setShowModalUserDetail(false);
+        dispatch(deleteCarritoUser())
+        setShowProducts(true);
+        setShowModalSuccess(true);
+      }else{
+        setMessageModal(message)
+      }
+    } catch (error) {
+      toast.error(messages.SMSERROR)
+    } finally {
+      setShowSpinner(false)
     }
-    setShowSpinner(false)
+  
   };
 
 
@@ -88,6 +95,7 @@ const Carrito = ({ setShowProducts, setShowModalSuccess, setMessageModal, active
           setShowModalSuccess={setShowModalSuccess}
         />
       )}
+      <Toaster/>
     </>
   );
 };

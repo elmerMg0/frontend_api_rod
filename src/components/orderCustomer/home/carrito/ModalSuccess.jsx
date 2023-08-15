@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
-import { messages } from "../Main";
+import { messages } from "../Ecommerce";
 const ModalConfirm = ({ show, onHide, deleteSomething, message }) => {
   return (
     <Modal show={show} centered>

@@ -2,7 +2,6 @@ import Header from "./header/Header";
 import Category from "./category/Category";
 import Carrito from "./carrito/Carrito";
 import CategoryCard from "./categorywproducts/CategoryCard";
-import { APISERVICE } from "../../../services/api.services";
 import { Suspense, lazy, useEffect, useState } from "react";
 import "../../../styles/global.css";
 import ModalOrderDetail from "./categorywproducts/ModalOrderDetail";
@@ -10,11 +9,13 @@ import ModalSuccess from "./carrito/ModalSuccess";
 import { Footer } from "./footer/Footer";
 import LoadingRed from "./loader/LoadingRed";
 import Seeker from "./header/Seeker";
+import { APISERVICE } from "../../../services/api.services";
 export const messages = {
   SMSSUCCES: "Su pedido se realizo exitosamente.",
+  SMSERROR: 'Ocurrio un error'
 };
 
-const ApisXpres = () => {
+const Ecommerce = () => {
   const [categories, setCategories] = useState([]);
   const [categoryWithProducts, setcategoryWithProducts] = useState([]);
   const [showOrderDetail, setShowOrderDetail] = useState(false);
@@ -61,6 +62,7 @@ const ApisXpres = () => {
         setcategoryWithProducts(categories);
       }
     } catch (error) {
+      
     } finally {
       setShowLoader(false);
     }
@@ -131,4 +133,4 @@ const ApisXpres = () => {
     </div>
   );
 };
-export default ApisXpres;
+export default Ecommerce;

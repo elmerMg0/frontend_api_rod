@@ -31,8 +31,24 @@
   align-items: center;
   gap: 3px;
   cursor: pointer;
+  position:relative;
 }
-.bg-header__shopicon > p{
-  margin: 0;
-  color: var(--colorWhite);
+
+.bg-header__shopicon-total{
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  background-color: var(--colorWhite);
+  width: 15px;
+  height: 15px;
+  top: 15px;
+  left: 10px;
+  position: absolute;
+  color: var(--colorRedMain);
+  border-radius: 50%;
+  padding: 2px;
+  font-size: 11px;
+}
+.bg-header__shopicon-total > p{
+  margin: 2px 0px 0px 2px;
 }

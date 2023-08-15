@@ -25,7 +25,6 @@ const errorInputs = {
   name: false,
   day: false,
   hour: false,
-  nombre: false,
   phone: false
 };
 
@@ -98,9 +97,18 @@ const ModalSendDetail = ({ show, setShow, infoBussines, sendOrder, showSpinner, 
 
   const handleSendOrder = () => {
     if(active){
+      console.log(inputsRequired, infoDetailSale)
       if(infoDetailSale.nombre === '' ){
-        setInputsRequired({ ...inputsRequired, ...{ nombre: true } });
+        setInputsRequired(prevState => ({ ...prevState, name: true }));
         return;
+      }else{
+        setInputsRequired(prevState => ({ ...prevState, name: false }));
+      }
+      if(infoDetailSale.phone === '' ){
+        setInputsRequired(prevState => ({ ...prevState, phone : true  }));
+        return;
+      }else{
+        setInputsRequired(prevState => ({ ...prevState, phone: false }));
       }
       sendOrder(infoDetailSale, totalPrice);
     }else{
@@ -108,6 +116,7 @@ const ModalSendDetail = ({ show, setShow, infoBussines, sendOrder, showSpinner, 
       setShowModalSuccess(true);
     }
   };
+  console.log('render')
 
   const address = (
     <div className={ infoDetailSale.delivery ? 'modal-send-detail__address active-delivery': "modal-send-detail__address "}>
@@ -120,9 +129,7 @@ const ModalSendDetail = ({ show, setShow, infoBussines, sendOrder, showSpinner, 
           value={infoDetailSale.address}
           onChange={handleOnChangeInput}
         />
-        {inputsRequired.address && (
-          <p className="sms-error">{messageError}</p>
-        )}
+         <p className={`error-line sms-error ${inputsRequired.address ? 'show-error' : ''} `}>{messageError}</p>
       </div>
       <div>
         <h5 htmlFor="description">Aclaración de dirección</h5>
@@ -261,12 +268,12 @@ const ModalSendDetail = ({ show, setShow, infoBussines, sendOrder, showSpinner, 
               <div>
                 <h5 htmlFor="name">Nombre</h5>
                  <input type="text" name="nombre" value={infoDetailSale.nombre} onChange={handleOnChangeInput}/>
-                {inputsRequired.nombre && <p className="sms-error">{messageError}</p>}
+                 <p className={`error-line sms-error ${inputsRequired.name ? 'show-error' : ''} `}>{messageError}</p>
               </div>
               <div>
                 <h5 htmlFor="phone">Teléfono*</h5>
-                <input type="tel" placeholder={infoBussines.celular} value={infoDetailSale.phone} name='phone' onChange={handleOnChangeInput}/>
-                {inputsRequired.phone && <p className="sms-error">{messageError}</p>}
+                <input type="number" placeholder={infoBussines.celular} value={infoDetailSale.phone} name='phone' onChange={handleOnChangeInput}/>
+                <p className={`error-line sms-error ${inputsRequired.phone ? 'show-error' : ''} `}>{messageError}</p>
               </div>
             </div>
             <h5 style={{marginTop: '15px', fontSize: '16px'}}>Resumen del Pedido</h5>

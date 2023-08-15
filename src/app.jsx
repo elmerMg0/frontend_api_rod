@@ -6,6 +6,8 @@ import RoutesWithNotFount from "./utilities/RoutesWithNotFount";
 import { Suspense, lazy } from "react";
 import Loading from "./components/administrator/loader/Loading";
 import Kitchen from "./components/kitchen/Kitchen";
+import Ecommerce from "./components/orderCustomer/home/Ecommerce";
+import Map from "./components/orderCustomer/map/Map";
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 function App() {
   return (
@@ -13,10 +15,10 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <RoutesWithNotFount>
-          {/*   <Route
+            <Route
               path="/"
-              element={<Kitchen />}
-            /> */}
+              element={<Map />}
+            />
             <Route path={PublicRoutes.LOGIN} element={<Login />} />
             <Route element={<AuthGuard />}>
               <Route

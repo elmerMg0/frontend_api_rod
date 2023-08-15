@@ -1,4 +1,5 @@
 import "../../../../styles/carrito/categorywproducts.css";
+import photoDefault from '../../../../assets/img/fotoDeault.webp'
 const APIURLIMG = import.meta.env.VITE_REACT_APP_API_URL_IMG;
 const CategoryCard = ({ categories, setShowOrderDetail, setCategory }) => {
   
@@ -17,10 +18,16 @@ const CategoryCard = ({ categories, setShowOrderDetail, setCategory }) => {
               <h5>{cat.nombre}</h5>
               <div className="category-card__body">
                 <div className="category-card__img">
-                  <img
+                  {
+                    cat.url_image ? 
+                    <img
                     src={`${APIURLIMG}${cat.url_image}`}
                     alt="foto de categoria"
                     />
+                    :
+                    <img src={photoDefault}/>
+                }
+                    
                 </div>
                 <div className="category-card__footer">
                   <div>
