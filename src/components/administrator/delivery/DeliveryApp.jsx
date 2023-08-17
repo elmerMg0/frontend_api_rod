@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import "../../../styles/administracion/delivery.css";
 import OrderTable from "./OrderTable";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { APISERVICE } from "../../../services/api.services";
 import PdfOrder from "./PdfOrder";
 import ModalOrderDetail from "./ModalOrderDetail";
+import { updateDelivery, updateQuantity } from "../../../redux/states/delivery";
+import { useRef } from "react";
 
 export const typesShow = {
   MODAL: 'modal',
@@ -23,11 +25,26 @@ const DeliveryApp = () => {
   const [showModalPdf, setShowModalPdf] = useState(false);
   const [showOrderDetail, setShowOrderDetail] = useState(false)
   const [typeTicket, setTypeTicket] = useState(typeTicketExists.COCINA)
+  const [isActive, setIsActive] = useState(false)
+  const delivery = useSelector(store => store.deliverySlice);
+  const dispatch = useDispatch();
+  const setinterval = useRef(null);
+/*   useEffect(() => {
+    console.log(setinterval, 'useeffect')
+    if(delivery.state){
+      if(!setinterval.current){
+        setInterval.current = setInterval(() => {
+          getDeliverySale()
+        },5000)
+      }
+    }else{
 
-  useEffect(() => {
+    }
+  }, [delivery]); */
+  useEffect(()=> {
     getDeliverySale();
-  }, []);
-
+  },[])
+  console.log('render')
   const getDeliverySale = async () => {
     const url = "venta/get-sale-detail-all/?";
     if (user.periodUser.id !== null) {
@@ -35,6 +52,11 @@ const DeliveryApp = () => {
       const { success, sales } = await APISERVICE.get(url, params);
       if (success) {
         setSales(sales);
+        const quantitya = sales.filter(sale => sale.estado === 'pendiente').length;
+        console.log(quantitya, delivery.quantity)
+        if(delivery.quantity !== quantitya){
+          dispatch(updateQuantity({quantity: quantitya}))
+        }
       }else{
         setSales([]);
       }
@@ -61,11 +83,30 @@ const DeliveryApp = () => {
     }
   };
 
+  const handleUpdateDelivery = () => {
+    if(delivery.state){
+      dispatch(updateDelivery({state: false}))
+      console.log(setInterval.current)
+      clearInterval(setinterval.current);
+      setinterval.current = null;
+    }else{
+      dispatch(updateDelivery({state: true}))
+      setinterval.current = setInterval(() => {
+        getDeliverySale()
+      },5000)
+    }
+  }
+
   return (
     <section className="delivery">
       <div className="delivery-header">
         <h3 style={{marginBottom: '15px'}}>Pedidos</h3> 
-        <button className="btn-main" onClick={() => getDeliverySale()}>Actualizar</button>
+        {
+          delivery.state ? 
+          <button className="btn-main-green" onClick={() => handleUpdateDelivery()}>{delivery.state ? 'Activo': 'Activar'}</button>
+          :
+          <button className="btn-main" onClick={() => handleUpdateDelivery()}>{delivery.state ? 'Activo': 'Activar'}</button>
+        }
       </div>
       <OrderTable
         sales={sales}

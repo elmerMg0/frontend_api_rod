@@ -5,7 +5,7 @@ import { createView } from "../../../redux/states/dashboard";
 import { Toaster, toast } from "react-hot-toast";
 
 const initialState = {
-  initialAmount: "",
+  initialAmount: 0,
   totalSaleCash: "",
   totalSaleTransfer: "",
   totalSaleCard: "",

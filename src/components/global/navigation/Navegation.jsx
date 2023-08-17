@@ -29,6 +29,8 @@ const Navegation = () => {
   const userRole = useSelector((store) => store.user.role);
   const [navigationWidth, setNavigationWidth] = useState(widthNavigation.min);
   const [navigationLeft, setNavigationLeft] = useState(false);
+  const quantityOrders = useSelector(store => store.deliverySlice)
+
   const handleOnClick = (view) => {
     window.localStorage.setItem("view", view);
     dispatch(createView(view));
@@ -125,7 +127,13 @@ const Navegation = () => {
         onClick={() => handleOnClick("orderApp")}
         className="navigation__content"
       >
-        <img src={trolley} alt="svgImg" />
+        <div className="position-relative">
+          <img src={trolley} alt="svgImg" />
+          {
+            quantityOrders.quantity > 0 &&
+            <p className="total-orders">{quantityOrders.quantity}</p>
+          }
+        </div>
        {/* <TrolleyIcon/> */}
         <button className="navigation__link" href="">
           App

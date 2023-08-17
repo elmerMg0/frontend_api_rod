@@ -16,10 +16,11 @@ const OrderTable = ({ sales, getSaleDetailSample, updateState }) => {
         </tr>
       </thead>
       <tbody>
-        {sales && sales.length > 0
+        {sales?.length > 0
           ? sales.map((sale) => {
               return (
                 <OrderTableRow
+                  key={sale.id}
                   sale={sale}
                   getSaleDetailSample={getSaleDetailSample}
                   updateState={updateState}

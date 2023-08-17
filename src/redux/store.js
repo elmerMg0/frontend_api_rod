@@ -3,7 +3,7 @@ import dashboardSliceReducer from '../redux/states/dashboard'
 import carritoSliceReducer, { KeyLocalStorate } from '../redux/states/carrito'
 import carritoUserSliceReducer from '../redux/states/carritoUser'
 import userSliceReducer from '../redux/states/user'
-
+import deliverySlice from '../redux/states/delivery'
 
 //crear middleware
 const persistLocalStorageMiddleware = (store) => (next) => (action) => {
@@ -16,7 +16,8 @@ export default configureStore({
         dashboard: dashboardSliceReducer,
         carrito: carritoSliceReducer,
         user: userSliceReducer,
-        carritoUser: carritoUserSliceReducer
+        carritoUser: carritoUserSliceReducer,
+        deliverySlice: deliverySlice
     },
     middleware: [persistLocalStorageMiddleware]
 })
