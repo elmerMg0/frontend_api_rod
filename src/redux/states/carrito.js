@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { typeDish } from '../../utils/constans';
-import { keyCarritoUser } from './carritoUser';
 
 const initialState = { orderDetail: []} 
 export const KeyLocalStorate = 'carrito'
@@ -13,7 +12,7 @@ const validateStock = (product, productStore=null) => {
 
 const carritoSlice = createSlice({
     name: 'carrito',
-    initialState: localStorage.getItem(keyCarritoUser) ? JSON.parse(localStorage.getItem(keyCarritoUser)) : initialState,
+    initialState: localStorage.getItem(KeyLocalStorate) ? JSON.parse(localStorage.getItem(KeyLocalStorate)) : initialState,
     reducers: {
         createCarrito: (action ) => {
             return action.payload;

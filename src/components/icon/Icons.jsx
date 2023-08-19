@@ -1,6 +1,6 @@
 export function CurrentInventary(){
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-truck" width="36" height="36" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" stroke-linecap="round" strokeLinejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-truck" width="36" height="36" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
         <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
         <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
@@ -10,7 +10,7 @@ export function CurrentInventary(){
 }
 export function Bussines(){
     return(
-        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-building-store" width="35" height="35" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" stroke-linecap="round" strokeLinejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-building-store" width="35" height="35" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
         <line x1="3" y1="21" x2="21" y2="21" />
         <path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4" />
@@ -22,7 +22,7 @@ export function Bussines(){
 }
 export function ProductsIcon(){
     return(
-        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-pizza" width="35" height="35" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" stroke-linecap="round" strokeLinejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-pizza" width="35" height="35" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
         <path d="M12 21.5c-3.04 0 -5.952 -.714 -8.5 -1.983l8.5 -16.517l8.5 16.517a19.09 19.09 0 0 1 -8.5 1.983z" />
         <path d="M5.38 15.866a14.94 14.94 0 0 0 6.815 1.634a14.944 14.944 0 0 0 6.502 -1.479" />
@@ -33,7 +33,7 @@ export function ProductsIcon(){
 }
 
 export function UsersIcon(){
-    return(<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-users" width="35" height="35" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" stroke-linecap="round" strokeLinejoin="round">
+    return(<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-users" width="35" height="35" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
     <circle cx="9" cy="7" r="4" />
     <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
@@ -43,7 +43,7 @@ export function UsersIcon(){
 }
 
 export function CategoryIcon(){
-    return(<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-category" width="35" height="35" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" stroke-linecap="round" strokeLinejoin="round">
+    return(<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-category" width="35" height="35" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
     <path d="M4 4h6v6h-6z" />
     <path d="M14 4h6v6h-6z" />
@@ -54,7 +54,7 @@ export function CategoryIcon(){
 
 export function PosIcon(){
     return(
-        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-cash" width="35" height="35" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" stroke-linecap="round" strokeLinejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-cash" width="35" height="35" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
   <rect x="7" y="9" width="14" height="10" rx="2" />
   <circle cx="14" cy="14" r="2" />
@@ -63,7 +63,7 @@ export function PosIcon(){
     )
 }
 export function TrolleyIcon(){
-    return(<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-shopping-cart" width="35" height="35" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" stroke-linecap="round" strokeLinejoin="round">
+    return(<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-shopping-cart" width="35" height="35" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
     <circle cx="6" cy="19" r="2" />
     <circle cx="17" cy="19" r="2" />
@@ -72,7 +72,7 @@ export function TrolleyIcon(){
   </svg>)
 }
 export function ReportIcon(){
-    return(<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-pizza" width="35" height="35" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" stroke-linecap="round" strokeLinejoin="round">
+    return(<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-pizza" width="35" height="35" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
     <path d="M12 21.5c-3.04 0 -5.952 -.714 -8.5 -1.983l8.5 -16.517l8.5 16.517a19.09 19.09 0 0 1 -8.5 1.983z" />
     <path d="M5.38 15.866a14.94 14.94 0 0 0 6.815 1.634a14.944 14.944 0 0 0 6.502 -1.479" />
@@ -82,7 +82,7 @@ export function ReportIcon(){
 }
 
 export function TicketIcon(){
-    return(<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-receipt-2" width="35" height="35" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" stroke-linecap="round" strokeLinejoin="round">
+    return(<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-receipt-2" width="35" height="35" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
     <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2" />
     <path d="M14 8h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5m2 0v1.5m0 -9v1.5" />
@@ -90,7 +90,7 @@ export function TicketIcon(){
 }
 
 export function PeriodIcon(){
-    return(<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-clipboard-check" width="35" height="35" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" stroke-linecap="round" strokeLinejoin="round">
+    return(<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-clipboard-check" width="35" height="35" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
     <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
     <rect x="9" y="3" width="6" height="4" rx="2" />
@@ -99,7 +99,7 @@ export function PeriodIcon(){
 }
 
 export function HistoryProductsIcon(){
-    return(<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-report-search" width="35" height="35" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" stroke-linecap="round" strokeLinejoin="round">
+    return(<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-report-search" width="35" height="35" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
     <path d="M8 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h5.697" />
     <path d="M18 12v-5a2 2 0 0 0 -2 -2h-2" />
@@ -112,7 +112,7 @@ export function HistoryProductsIcon(){
 }
 
 export function PlusIcon(){
-    return(<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-circle-plus" width="30" height="30" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#00b341" fill="none" stroke-linecap="round" strokeLinejoin="round">
+    return(<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-circle-plus" width="30" height="30" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#00b341" fill="none" strokeLinecap="round" strokeLinejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
     <circle cx="12" cy="12" r="9" />
     <line x1="9" y1="12" x2="15" y2="12" />
@@ -121,7 +121,7 @@ export function PlusIcon(){
 }
 
 export function DecrementIcon(){
-    return(<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-circle-minus" width="30" height="30" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" strokeLinejoin="round">
+    return(<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-circle-minus" width="30" height="30" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ff2825" fill="none" strokeLinecap="round" strokeLinejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
     <circle cx="12" cy="12" r="9" />
     <line x1="9" y1="12" x2="15" y2="12" />
@@ -129,7 +129,7 @@ export function DecrementIcon(){
 }
 
 export function TrashIcon({color}){
-    return(<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-trash" width="20" height="20" viewBox="0 0 24 24" strokeWidth="2" stroke={color} fill="none" stroke-linecap="round" strokeLinejoin="round">
+    return(<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-trash" width="20" height="20" viewBox="0 0 24 24" strokeWidth="2" stroke={color} fill="none" strokeLinecap="round" strokeLinejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
     <line x1="4" y1="7" x2="20" y2="7" />
     <line x1="10" y1="11" x2="10" y2="17" />
