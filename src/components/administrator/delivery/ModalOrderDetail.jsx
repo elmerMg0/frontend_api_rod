@@ -25,6 +25,7 @@ const ModalOrderDetail = ({ show, saleInfo, products, setShowModal, getSaleDetai
           <p>Descripcion: {saleInfo.descripcion_domicilio}</p>
           <p>hora: {saleInfo.hora}</p>
           <p>telefono: {saleInfo.telefono}</p>
+          <p>Nota: {saleInfo.nota}</p>
         </div>
         <Table>
           <thead>
