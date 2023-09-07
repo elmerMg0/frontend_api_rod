@@ -30,7 +30,6 @@ const DeliveryApp = () => {
   const dispatch = useDispatch();
   const setinterval = useRef(null);
 /*   useEffect(() => {
-    console.log(setinterval, 'useeffect')
     if(delivery.state){
       if(!setinterval.current){
         setInterval.current = setInterval(() => {
@@ -44,7 +43,7 @@ const DeliveryApp = () => {
   useEffect(()=> {
     getDeliverySale();
   },[])
-  console.log('render')
+
   const getDeliverySale = async () => {
     const url = "venta/get-sale-detail-all/?";
     if (user.periodUser.id !== null) {
@@ -53,7 +52,6 @@ const DeliveryApp = () => {
       if (success) {
         setSales(sales);
         const quantitya = sales.filter(sale => sale.estado === 'pendiente').length;
-        console.log(quantitya, delivery.quantity)
         if(delivery.quantity !== quantitya){
           dispatch(updateQuantity({quantity: quantitya}))
         }
@@ -86,7 +84,6 @@ const DeliveryApp = () => {
   const handleUpdateDelivery = () => {
     if(delivery.state){
       dispatch(updateDelivery({state: false}))
-      console.log(setInterval.current)
       clearInterval(setinterval.current);
       setinterval.current = null;
     }else{

@@ -79,7 +79,6 @@ const CategoryCrud = () => {
   };
 
   const updateProduct = async (product, image) => {
-    console.log(product)
     let $url = `producto/update?`;
     let $params = `idProduct=${product.id}`;
     const fd = new FormData();

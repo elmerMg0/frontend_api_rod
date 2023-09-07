@@ -12,6 +12,8 @@ import DeliveryApp from "../components/administrator/delivery/DeliveryApp";
 import ReportProduct from "../components/administrator/reportProduct/ReportProduct";
 import Inventary from "../components/administrator/inventario/Inventary";
 import CurrentInventary from "../components/administrator/currentInventary/CurrentInventary";
+import Lounges from "../components/administrator/lounges/Lounges";
+import LoungeConfig from '../components/administrator/loungeConfig/LoungeConfig'
 const ContentDashboard = () => {
   const view = useSelector((store) => store.dashboard);
   return (
@@ -30,6 +32,8 @@ const ContentDashboard = () => {
       {view === "reportProduct" && <ReportProduct />}
       {view === "inventary" && <Inventary />}
       {view === "inventaryCurrent" && <CurrentInventary />}
+      {view === "lounges" && <Lounges />}
+      {view === "loungeConfig" && <LoungeConfig />}
     </>
   );
 };

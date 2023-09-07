@@ -12,14 +12,29 @@ a{
     text-decoration: none;
 }
 
+.header{
+    position: relative;
+}
 .navigation{
     width: 167px;
     height: 100vh;
     /* height: calc(100vh - 58px); */
-    height: 100%;
     background-color: var(--colorSecundaryBlack);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    translate: calc(-170px);
+}
+.navigation.show-navigation{
+    translate: calc(0px);
 }
 
+.burgericon{
+    display: flex;
+    justify-content: right;   
+    padding: 10px;
+}
 .navigation__logo{
     background-color: var(--colorMainBlack);
     padding: 20px;
@@ -28,7 +43,7 @@ a{
 .navigation__links{
     background-color: var(--colorSecundaryBlack);
      /* height: calc(100vh - 58px); */
-     height: auto;
+   /*   height: auto; */
     overflow: hidden;
     width: 100%;
     display: flex;
@@ -53,7 +68,7 @@ a{
 .navigation ul{
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 0px;
     padding: 0;
     /* margin: 20px 0px; */
     width: 100%;
@@ -63,7 +78,7 @@ a{
    /*  display: flex;
     align-items: center;
     gap: 8px; */
-    padding: 7px 0px;
+    padding: 4px 0px;
 }
 
 .navigation ul li:hover{
@@ -83,6 +98,7 @@ a{
 .navigation__content button{
     background-color: transparent;
     border: none;
+    text-align: left;
 }
 
 .hidden-text{
@@ -93,7 +109,7 @@ a{
     background-color: transparent;
     border: none;
     font-size: 25px;
-    /* text-align: center; */
+    text-align: center;
    /*  position: absolute;
     bottom: 0;
     margin: auto; */
@@ -101,6 +117,7 @@ a{
 .btn-maxmin:hover{
     background-color: var(--colorSecundary);
 }
+
 .total-orders{
     display: flex;
     align-items: center;
@@ -108,8 +125,7 @@ a{
     background-color: var(--colorRed);
     width: 18px;
     height: 18px;
-    top: 20px;
-    left: 20px;
+    left: -25px;
     position: absolute;
     color: var(--colorWhite);
     border-radius: 50%;

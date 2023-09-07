@@ -5,8 +5,8 @@ import {
   decreaseQuantity,
   deleteProduct,
 } from "../../../redux/states/carrito";
-import { DecrementIcon, PlusIcon, TrashIcon } from "../../icon/Icons";
-import { color } from "../../../utils/constans";
+import { DecrementIcon, PlusIcon, TrashIcon } from "../../icons/Icons";
+import { color } from "../../../utilities/constans";
 const OrderDetailRow = ({ product }) => {
   const dispatch = useDispatch();
 

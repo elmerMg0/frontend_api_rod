@@ -27,7 +27,6 @@ const ProductModal = ({
   const [selectedImage, setSelectedImage] = useState(null);
   
   useEffect(() => {
-    console.log(productToEdit)
     if(Object.keys(productToEdit).length === 0){
       setProduct(initialState)
     }else{
@@ -37,7 +36,6 @@ const ProductModal = ({
   }, [show]);
 
   const handleConfirm = () => {
-    console.log(product)
     const cortesia = product.cortesia === 'Activo' ? 1: 0;
     if (!product.id) {
       create({...product, cortesia: cortesia}, selectedImage);

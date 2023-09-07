@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { typeDish } from '../../utils/constans';
+import { typeDish } from '../../utilities/constans';
 
 const initialState = { orderDetail: []} 
 export const KeyLocalStorate = 'carrito'

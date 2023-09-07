@@ -1,0 +1,61 @@
+.lounges{
+    margin: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.lounges-list{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+.lounges-list__card{
+    background-color: var(--colorWhite);
+    border-radius: 10px;
+    padding: 10px 50px;
+    color: var(--colorMain);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.tables{
+    display: grid;
+    gap: 10px;
+    place-items: center;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 40px;
+    height: calc(100vh - 180px);
+}
+.table-card{
+    display: flex;
+    width: 100%;
+    background-image: url('../../../assets/img/table5.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.table-card__empty{
+    max-width: 60px;
+    height: 60px;
+}
+.table-card h5{
+    color: var(--colorWhite);
+    font-weight: 600;
+}
+.table-card__disabled{
+    background-color: var(--colorRed);
+}
+.table-card__available{
+    background-color: var(--colorGreen);
+}
+.flag-card{
+    border: 1px solid var(--colorMain);
+}

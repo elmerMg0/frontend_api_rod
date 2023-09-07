@@ -14,7 +14,7 @@ import ViewerPrint from "./ViewerPrint";
 import ModalBeginPeriod from "./ModalBeginPeriod";
 import PosBarLef from "./PosBarLeft";
 import ModalCustomers from "./ModalCustomers";
-import { typeDish } from "../../../utils/constans";
+import { typeDish } from "../../../utilities/constans";
 import { useProduct } from "../../../hooks/useProduct";
 
 /* const detailSale = {

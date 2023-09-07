@@ -33,7 +33,7 @@ function Login() {
     const { success, id, role, message, accessToken, period } = await APISERVICE.post(user, url )
     if( success ){
       setToken(accessToken);
-      dispatch(createView('pos'))
+      dispatch(createView('lounges'))
       let userLoged = {
         username: user.username,
         accessToken: accessToken,
